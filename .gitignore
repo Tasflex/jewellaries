@@ -19,3 +19,4 @@ var/
 
 # rendered videos are regenerated on the server by `python -m studio videos`
 apps/web/public/media/videos/
+data/social/
