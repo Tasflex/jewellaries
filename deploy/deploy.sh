@@ -44,7 +44,12 @@ systemctl daemon-reload
 systemctl enable -q aurum-api aurum-web aurum-fulfil
 systemctl restart aurum-api
 sleep 1
-systemctl restart aurum-web aurum-fulfil
+# The old server keeps running during the build and can re-render pages with the OLD
+# code into Next's on-disk route cache; clear it so the new build serves fresh pages.
+systemctl stop aurum-web
+rm -rf apps/web/.next/server/route-cache
+systemctl start aurum-web
+systemctl restart aurum-fulfil
 
 log "nginx"
 cp deploy/nginx-jewellaries.conf /etc/nginx/sites-available/jewellaries

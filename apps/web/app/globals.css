@@ -2012,3 +2012,25 @@ details.acc p {
 .footer-brand .logo-svg {
   width: 210px;
 }
+
+.footer-bottom .credit {
+  display: inline-block;
+  margin-left: 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--line);
+}
+.footer-bottom .credit a {
+  color: var(--gold-text);
+  font-weight: 600;
+}
+.footer-bottom .credit a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 560px) {
+  .footer-bottom .credit {
+    display: block;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    border: 0;
+  }
+}

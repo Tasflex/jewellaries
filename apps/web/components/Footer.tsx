@@ -44,6 +44,12 @@ export default function Footer() {
       <div className="wrap footer-bottom">
         <p>
           © {new Date().getFullYear()} {SITE.name}. Ships worldwide.
+          <span className="credit">
+            Powered by{" "}
+            <a href="https://tasflex.co.ke" target="_blank" rel="noopener">
+              Tasflex Designs
+            </a>
+          </span>
         </p>
         <div className="footer-social">
           <a href={SITE.social.tiktok} rel="noopener" target="_blank">
