@@ -1,0 +1,14 @@
+[Unit]
+Description=Aurum Rosso API (Rust)
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/jewellaries/services/api
+EnvironmentFile=/var/www/jewellaries/.env
+ExecStart=/var/www/jewellaries/services/api/target/release/aurum-api
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

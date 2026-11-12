@@ -1,0 +1,15 @@
+[Unit]
+Description=Aurum Rosso storefront (Next.js)
+After=network.target aurum-api.service
+
+[Service]
+WorkingDirectory=/var/www/jewellaries/apps/web
+EnvironmentFile=/var/www/jewellaries/.env
+Environment=NODE_ENV=production PORT=3300 HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 3300 -H 127.0.0.1
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

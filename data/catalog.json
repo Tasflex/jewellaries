@@ -1,0 +1,511 @@
+{
+  "brand": {
+    "name": "Aurum Rosso",
+    "tagline": "Jewellery that catches the light.",
+    "free_shipping_usd": 59,
+    "currency": "USD"
+  },
+  "categories": [
+    {
+      "slug": "necklaces",
+      "name": "Necklaces",
+      "blurb": "Paperclip chains, pendants and the layers everyone asks about.",
+      "seo_title": "Gold Necklaces & Layering Chains",
+      "seo_description": "Shop 18k gold-plated necklaces, pendants and layering chains. Hypoallergenic, tarnish-resistant, shipped worldwide."
+    },
+    {
+      "slug": "earrings",
+      "name": "Earrings",
+      "blurb": "Huggies, drops and studs that frame the face.",
+      "seo_title": "Huggie Hoops, Studs & Drop Earrings",
+      "seo_description": "Hypoallergenic gold and silver earrings: huggie hoops, crystal studs and statement drops. Free worldwide shipping over $59."
+    },
+    {
+      "slug": "rings",
+      "name": "Rings",
+      "blurb": "Stackable bands and solitaires built to be worn together.",
+      "seo_title": "Stackable Rings & Solitaires",
+      "seo_description": "Stackable gold rings, signet rings and cubic zirconia solitaires. Waterproof 18k PVD plating, shipped worldwide."
+    },
+    {
+      "slug": "bracelets",
+      "name": "Bracelets",
+      "blurb": "Tennis, cuff and chain — the wrist stack, solved.",
+      "seo_title": "Tennis Bracelets, Cuffs & Chain Bracelets",
+      "seo_description": "Sparkling tennis bracelets, gold cuffs and chain bracelets designed for stacking. Gift-boxed and shipped worldwide."
+    },
+    {
+      "slug": "gift-sets",
+      "name": "Gift Sets",
+      "blurb": "Pre-styled sets in our signature red box. Ready to gift.",
+      "seo_title": "Jewellery Gift Sets in a Signature Box",
+      "seo_description": "Curated jewellery gift sets arriving in our signature red gift box with a handwritten note. Worldwide delivery."
+    }
+  ],
+  "products": [
+    {
+      "slug": "solene-teardrop-pendant",
+      "name": "Solène Teardrop Pendant",
+      "category": "necklaces",
+      "price": 49,
+      "compare_at": 79,
+      "cost": 9.4,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "A single teardrop crystal on a fine 18k gold-plated chain — made to catch every light in the room.",
+      "description": "Solène is the necklace you forget you're wearing until someone stops you to ask about it. A hand-set AAA cubic zirconia teardrop, cut with 57 facets, hangs from a 45 cm cable chain with a 5 cm extender. The 18k gold PVD plating is waterproof and tarnish-resistant, so it goes from shower to dinner without coming off.",
+      "highlights": [
+        "18k gold PVD over 316L stainless steel",
+        "AAA cubic zirconia, 57 facets",
+        "45 cm + 5 cm extender",
+        "Waterproof & hypoallergenic"
+      ],
+      "stock": 50,
+      "tags": [
+        "bestseller",
+        "layering",
+        "gift"
+      ],
+      "layer": "pendant",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-NK-TEAR-01"
+      }
+    },
+    {
+      "slug": "milano-paperclip-chain",
+      "name": "Milano Paperclip Chain",
+      "category": "necklaces",
+      "price": 39,
+      "compare_at": 59,
+      "cost": 6.1,
+      "metal": "gold",
+      "stone": "none",
+      "short": "The chunky-but-light paperclip chain that anchors every layered look.",
+      "description": "Milano is the base layer of almost every stack we style. Elongated links give it presence without weight, and the polished finish throws light as you move. Wear it alone, or under Solène for the look that went viral on our TikTok.",
+      "highlights": [
+        "18k gold PVD, waterproof",
+        "Link width 4 mm",
+        "42 cm + 5 cm extender",
+        "Lobster clasp"
+      ],
+      "stock": 50,
+      "tags": [
+        "layering",
+        "bestseller"
+      ],
+      "layer": "base",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-NK-PCLIP-04"
+      }
+    },
+    {
+      "slug": "riviera-tennis-necklace",
+      "name": "Riviera Tennis Necklace",
+      "category": "necklaces",
+      "price": 89,
+      "compare_at": 149,
+      "cost": 18.2,
+      "metal": "silver",
+      "stone": "clear",
+      "short": "A continuous line of 4 mm stones. Red-carpet sparkle, everyday price.",
+      "description": "Riviera is our most-saved piece. Sixty-two prong-set 4 mm stones in rhodium-plated settings create an unbroken line of light. A secure box clasp with safety latch keeps it where it belongs.",
+      "highlights": [
+        "62 × 4 mm AAA cubic zirconia",
+        "Rhodium plated",
+        "Box clasp with safety latch",
+        "40 cm"
+      ],
+      "stock": 50,
+      "tags": [
+        "statement",
+        "gift"
+      ],
+      "layer": "choker",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-NK-TENN-02"
+      }
+    },
+    {
+      "slug": "ember-ruby-heart-necklace",
+      "name": "Ember Ruby Heart",
+      "category": "necklaces",
+      "price": 59,
+      "compare_at": 89,
+      "cost": 11.3,
+      "metal": "gold",
+      "stone": "ruby",
+      "short": "A ruby-red heart on a satellite chain. The gift that says it for you.",
+      "description": "Ember pairs a lab-created ruby-red heart with a delicate satellite chain. It arrives in our signature red box, which makes it our most-gifted piece for anniversaries and Valentine's Day.",
+      "highlights": [
+        "Lab-created ruby-red crystal",
+        "18k gold PVD satellite chain",
+        "45 cm + 5 cm extender",
+        "Arrives gift-boxed"
+      ],
+      "stock": 50,
+      "tags": [
+        "gift",
+        "romance"
+      ],
+      "layer": "pendant",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-NK-HEART-07"
+      }
+    },
+    {
+      "slug": "luna-huggie-hoops",
+      "name": "Luna Huggie Hoops",
+      "category": "earrings",
+      "price": 35,
+      "compare_at": 55,
+      "cost": 5.2,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "Pavé huggies that hug the lobe and never come off.",
+      "description": "Luna's pavé row sits right against the lobe, so the stones catch light from every angle. The hinged click-closure is secure enough to sleep in.",
+      "highlights": [
+        "Pavé cubic zirconia",
+        "Hinged click closure",
+        "12 mm diameter",
+        "Nickel-free"
+      ],
+      "stock": 50,
+      "tags": [
+        "bestseller",
+        "everyday"
+      ],
+      "layer": null,
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-ER-HUG-11"
+      }
+    },
+    {
+      "slug": "aurora-crystal-drops",
+      "name": "Aurora Crystal Drops",
+      "category": "earrings",
+      "price": 45,
+      "compare_at": 69,
+      "cost": 7.9,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "Long, light, swinging drops — they move every time you turn your head.",
+      "description": "Aurora is made for movement. A cascade of three graduated crystals swings from a gold-plated stud, scattering light with every step.",
+      "highlights": [
+        "3 graduated crystals",
+        "Length 4.2 cm",
+        "Lightweight 3.1 g per earring",
+        "Butterfly backs"
+      ],
+      "stock": 50,
+      "tags": [
+        "statement",
+        "evening"
+      ],
+      "layer": null,
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-ER-DROP-03"
+      }
+    },
+    {
+      "slug": "petal-pearl-studs",
+      "name": "Petal Pearl Studs",
+      "category": "earrings",
+      "price": 29,
+      "compare_at": 45,
+      "cost": 4.1,
+      "metal": "gold",
+      "stone": "pearl",
+      "short": "Freshwater pearls in a gold halo. Quiet luxury.",
+      "description": "Petal sets a 7 mm freshwater pearl inside a fine gold-plated halo. Classic enough for the office, soft enough for a wedding.",
+      "highlights": [
+        "7 mm freshwater pearl",
+        "18k gold PVD halo",
+        "Hypoallergenic posts",
+        "Each pearl is unique"
+      ],
+      "stock": 50,
+      "tags": [
+        "everyday",
+        "bridal"
+      ],
+      "layer": null,
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-ER-PRL-05"
+      }
+    },
+    {
+      "slug": "eternity-band",
+      "name": "Eternity Band",
+      "category": "rings",
+      "price": 39,
+      "compare_at": 65,
+      "cost": 6.4,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "A full circle of stones. The band every stack is built around.",
+      "description": "Eternity is channel-set with stones all the way around, so it sparkles no matter how it turns on your finger. Stack it with Halo and Signet for our signature three-ring look.",
+      "highlights": [
+        "Full eternity setting",
+        "2.5 mm band width",
+        "Sizes 5–10",
+        "Waterproof plating"
+      ],
+      "stock": 50,
+      "tags": [
+        "stacking",
+        "bestseller"
+      ],
+      "layer": "stack",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-RG-ETER-02"
+      }
+    },
+    {
+      "slug": "halo-solitaire-ring",
+      "name": "Halo Solitaire",
+      "category": "rings",
+      "price": 55,
+      "compare_at": 95,
+      "cost": 9.8,
+      "metal": "silver",
+      "stone": "clear",
+      "short": "A 1.5 ct-look oval surrounded by a ring of light.",
+      "description": "Halo puts a brilliant oval centre stone inside a pavé frame, so it reads bigger and brighter than it is. Rhodium plated for a cool, white-metal shine.",
+      "highlights": [
+        "1.5 ct-look oval centre",
+        "Pavé halo",
+        "Rhodium plated",
+        "Sizes 5–10"
+      ],
+      "stock": 50,
+      "tags": [
+        "statement",
+        "gift"
+      ],
+      "layer": "stack",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-RG-HALO-09"
+      }
+    },
+    {
+      "slug": "rosso-signet-ring",
+      "name": "Rosso Signet",
+      "category": "rings",
+      "price": 45,
+      "compare_at": 69,
+      "cost": 7.0,
+      "metal": "gold",
+      "stone": "ruby",
+      "short": "Our namesake: a polished signet with a deep red stone.",
+      "description": "The Rosso Signet is the piece our brand is named after. A polished oval face holds a single deep-red stone, a little bit of power dressing for every day.",
+      "highlights": [
+        "Lab-created ruby-red stone",
+        "Polished oval face",
+        "Unisex sizing 5–12",
+        "Waterproof plating"
+      ],
+      "stock": 50,
+      "tags": [
+        "statement",
+        "unisex"
+      ],
+      "layer": "stack",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-RG-SIG-01"
+      }
+    },
+    {
+      "slug": "celeste-tennis-bracelet",
+      "name": "Celeste Tennis Bracelet",
+      "category": "bracelets",
+      "price": 69,
+      "compare_at": 119,
+      "cost": 13.5,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "A line of light around the wrist. The bracelet that gets photographed.",
+      "description": "Celeste sets 3 mm stones in a flexible line that follows the wrist. It's the piece that shows up most in our customers' unboxing videos.",
+      "highlights": [
+        "3 mm AAA cubic zirconia",
+        "Flexible articulated setting",
+        "17 cm + adjustable",
+        "Double safety clasp"
+      ],
+      "stock": 50,
+      "tags": [
+        "bestseller",
+        "gift"
+      ],
+      "layer": "wrist",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-BR-TENN-06"
+      }
+    },
+    {
+      "slug": "torque-cuff",
+      "name": "Torque Cuff",
+      "category": "bracelets",
+      "price": 49,
+      "compare_at": 75,
+      "cost": 8.2,
+      "metal": "gold",
+      "stone": "none",
+      "short": "A sculptural open cuff with a mirror finish.",
+      "description": "Torque is a single sculpted line of polished metal. It opens to slip on and holds its shape, and it pairs well with Celeste for a high-contrast wrist stack.",
+      "highlights": [
+        "Mirror-polished finish",
+        "Adjustable open cuff",
+        "Fits 15–18 cm wrists",
+        "Waterproof"
+      ],
+      "stock": 50,
+      "tags": [
+        "stacking",
+        "minimal"
+      ],
+      "layer": "wrist",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-BR-CUFF-02"
+      }
+    },
+    {
+      "slug": "figaro-chain-bracelet",
+      "name": "Figaro Chain Bracelet",
+      "category": "bracelets",
+      "price": 32,
+      "compare_at": 49,
+      "cost": 4.6,
+      "metal": "gold",
+      "stone": "none",
+      "short": "The Italian classic link, three short and one long.",
+      "description": "Figaro's rhythmic link is a timeless Italian design. It's light enough to stack three deep and polished enough to wear alone.",
+      "highlights": [
+        "Classic figaro link",
+        "18k gold PVD",
+        "17 cm + 3 cm extender",
+        "Lobster clasp"
+      ],
+      "stock": 50,
+      "tags": [
+        "everyday",
+        "unisex"
+      ],
+      "layer": "wrist",
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-BR-FIG-03"
+      }
+    },
+    {
+      "slug": "the-layering-edit",
+      "name": "The Layering Edit",
+      "category": "gift-sets",
+      "price": 99,
+      "compare_at": 147,
+      "cost": 19.0,
+      "metal": "gold",
+      "stone": "clear",
+      "short": "Solène + Milano + Riviera, pre-styled. The full TikTok look in one box.",
+      "description": "The three necklaces from our most-watched layering video, sized to sit perfectly at 40, 42 and 45 cm. Each is wrapped separately inside our signature red box, so there are no tangles.",
+      "highlights": [
+        "3 necklaces, pre-measured",
+        "Save $48 vs. separately",
+        "Signature red gift box",
+        "Handwritten note on request"
+      ],
+      "stock": 50,
+      "tags": [
+        "gift",
+        "layering",
+        "bestseller"
+      ],
+      "layer": null,
+      "bundle": [
+        "solene-teardrop-pendant",
+        "milano-paperclip-chain",
+        "riviera-tennis-necklace"
+      ],
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-SET-LAYER-01"
+      }
+    },
+    {
+      "slug": "the-stack-trio",
+      "name": "The Stack Trio",
+      "category": "gift-sets",
+      "price": 109,
+      "compare_at": 139,
+      "cost": 21.4,
+      "metal": "gold",
+      "stone": "ruby",
+      "short": "Eternity + Halo + Rosso Signet. A ready-made ring stack.",
+      "description": "Our three bestselling rings, chosen to stack with no gaps. Pick one size and we'll match all three.",
+      "highlights": [
+        "3 stackable rings",
+        "Save $30",
+        "Single size for all 3",
+        "Signature red gift box"
+      ],
+      "stock": 50,
+      "tags": [
+        "gift",
+        "stacking"
+      ],
+      "layer": null,
+      "bundle": [
+        "eternity-band",
+        "halo-solitaire-ring",
+        "rosso-signet-ring"
+      ],
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-SET-RING-02"
+      }
+    },
+    {
+      "slug": "midnight-gift-box",
+      "name": "Midnight Gift Box",
+      "category": "gift-sets",
+      "price": 79,
+      "compare_at": 114,
+      "cost": 14.2,
+      "metal": "gold",
+      "stone": "pearl",
+      "short": "Petal Pearl Studs + Ember Ruby Heart in one keepsake box.",
+      "description": "Our most-unboxed set: a matching pearl and ruby-heart pairing that arrives in the red box with gold foil, satin ribbon and a handwritten card.",
+      "highlights": [
+        "Studs + necklace",
+        "Save $35",
+        "Ribbon-tied keepsake box",
+        "Handwritten card"
+      ],
+      "stock": 50,
+      "tags": [
+        "gift",
+        "romance"
+      ],
+      "layer": null,
+      "bundle": [
+        "petal-pearl-studs",
+        "ember-ruby-heart-necklace"
+      ],
+      "supplier": {
+        "name": "cj",
+        "sku": "CJ-SET-MID-03"
+      }
+    }
+  ]
+}

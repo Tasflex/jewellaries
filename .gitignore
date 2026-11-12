@@ -1,0 +1,21 @@
+# deps / builds
+node_modules/
+.next/
+target/
+__pycache__/
+*.pyc
+.venv/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets & runtime data
+.env
+.env.*
+!.env.example
+var/
+*.db
+*.db-wal
+*.db-shm
+
+# rendered videos are regenerated on the server by `python -m studio videos`
+apps/web/public/media/videos/

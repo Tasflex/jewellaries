@@ -1,0 +1,14 @@
+[Unit]
+Description=Aurum Rosso fulfilment worker (forwards paid orders to the supplier)
+After=network.target aurum-api.service
+
+[Service]
+WorkingDirectory=/var/www/jewellaries/services/studio
+EnvironmentFile=/var/www/jewellaries/.env
+ExecStart=/var/www/jewellaries/services/studio/.venv/bin/python -m studio fulfil --loop --every 300
+Restart=always
+RestartSec=30
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
