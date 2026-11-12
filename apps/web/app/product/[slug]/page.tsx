@@ -63,11 +63,14 @@ export default async function ProductPage({ params }: { params: P }) {
       </nav>
       <div className="pdp">
         <div className="gallery">
+          {/* Main shot follows the theme: velvet in dark mode, ivory in light mode; the other one sits below. */}
           <div className="g-main g-img">
-            <Image src={`/media/products/${p.slug}-1.webp`} alt={`${p.name}, ${p.short}`} fill priority sizes="(max-width: 900px) 100vw, 58vw" />
+            <Image src={`/media/products/${p.slug}-1.webp`} alt={`${p.name}, ${p.short}`} fill priority sizes="(max-width: 900px) 100vw, 58vw" className="on-dark" />
+            <Image src={`/media/products/${p.slug}-2.webp`} alt={`${p.name}, ${p.short}`} fill sizes="(max-width: 900px) 100vw, 58vw" className="on-light" />
           </div>
           <div className="g-img">
-            <Image src={`/media/products/${p.slug}-2.webp`} alt={`${p.name} on an ivory background`} fill sizes="(max-width: 900px) 50vw, 29vw" />
+            <Image src={`/media/products/${p.slug}-2.webp`} alt={`${p.name} on an ivory background`} fill sizes="(max-width: 900px) 50vw, 29vw" className="on-dark" />
+            <Image src={`/media/products/${p.slug}-1.webp`} alt={`${p.name} on black velvet`} fill sizes="(max-width: 900px) 50vw, 29vw" className="on-light" />
           </div>
           {vids[0] ? (
             <Reel src={vids[0].video} poster={vids[0].poster} label={`${p.name}: ${vids[0].hook}`} className="g-img" />

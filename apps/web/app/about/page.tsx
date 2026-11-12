@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Story",
-  description: "Aurum Rosso makes waterproof gold jewellery that catches the light, designed to layer and to gift, and shipped worldwide in our signature red box.",
+  description: "Jewellariess makes waterproof gold jewellery that catches the light, designed to layer and to gift, and shipped worldwide in our signature red box.",
   alternates: { canonical: "/about" },
 };
 
@@ -14,13 +14,13 @@ export default function About() {
     <div className="wrap">
       <div className="prose" style={{ padding: "4rem 0" }}>
         <span className="eyebrow">Our story</span>
-        <h1>Gold, and a little red.</h1>
+        <h1>Jewellery, with a little extra.</h1>
         <p>
-          <em>Aurum</em> is Latin for gold. <em>Rosso</em> is Italian for red. Put together, that&rsquo;s everything we care about:
-          jewellery with the warmth of real gold, and the red box that turns it into a moment.
+          Jewellariess is jewellery with an extra flourish, and that&rsquo;s everything we care about: pieces with the warmth of real
+          gold, and a red box that turns opening them into a moment.
         </p>
         <div style={{ position: "relative", aspectRatio: "16 / 10", borderRadius: 14, overflow: "hidden", margin: "2rem 0" }}>
-          <Image src="/media/products/midnight-gift-box-1.webp" alt="The Aurum Rosso red gift box" fill sizes="736px" style={{ objectFit: "cover" }} />
+          <Image src="/media/products/midnight-gift-box-1.webp" alt="The Jewellariess red gift box" fill sizes="736px" style={{ objectFit: "cover" }} />
         </div>
         <h2>Made for real life</h2>
         <p>

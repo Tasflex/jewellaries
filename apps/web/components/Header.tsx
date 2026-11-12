@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CURRENCIES } from "@/lib/currency";
+import ThemeToggle from "./ThemeToggle";
 import { useStore } from "./store";
 
 const NAV = [
@@ -54,8 +55,8 @@ export default function Header() {
           <button className="icon-btn menu-btn" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(!open)}>
             <span className="burger" />
           </button>
-          <Link href="/" className="logo" aria-label="Aurum Rosso home">
-            AURUM <span>ROSSO</span>
+          <Link href="/" className="logo" aria-label="Jewellariess home">
+            JEWELLARI<span>ESS</span>
           </Link>
           <nav className={`main-nav ${open ? "open" : ""}`} aria-label="Main">
             {NAV.map((n) => (
@@ -75,6 +76,13 @@ export default function Header() {
               </svg>
             </Link>
             <CurrencySelect compact />
+            <ThemeToggle />
+            <Link href="/account" className="icon-btn" aria-label="Your account">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+              </svg>
+            </Link>
             <button className="icon-btn bag-btn" onClick={() => setDrawer(true)} aria-label={`Open bag, ${count} items`}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M5 8h14l-1 12H6L5 8Z" />

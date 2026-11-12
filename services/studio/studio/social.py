@@ -31,7 +31,7 @@ HOOKS = {
     ],
 }
 
-BASE_TAGS = ["#jewelrytok", "#jewellery", "#goldjewelry", "#aurumrosso"]
+BASE_TAGS = ["#jewelrytok", "#jewellery", "#goldjewelry", "#jewellariess"]
 FORMAT_TAGS = {
     "glint": ["#sparkle", "#everydayjewelry", "#waterproofjewelry", "#asmr"],
     "layering": ["#layeringnecklaces", "#necklacestack", "#ringstack", "#stylingtips"],

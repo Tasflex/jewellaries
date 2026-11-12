@@ -5,7 +5,7 @@ import { ARTICLES } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "The Journal: Jewellery Styling Guides",
-  description: "How to layer necklaces, stack rings and care for waterproof gold jewellery. Styling guides from Aurum Rosso.",
+  description: "How to layer necklaces, stack rings and care for waterproof gold jewellery. Styling guides from Jewellariess.",
   alternates: { canonical: "/journal" },
 };
 

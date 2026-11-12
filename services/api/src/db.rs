@@ -51,6 +51,32 @@ pub fn open(path: &str) -> Result<Connection> {
             country TEXT,
             created_at TEXT NOT NULL
         );
+        CREATE INDEX IF NOT EXISTS orders_email ON orders(email);
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT NOT NULL UNIQUE,
+            name TEXT,
+            avatar TEXT,
+            google_sub TEXT UNIQUE,
+            created_at TEXT NOT NULL,
+            last_login_at TEXT
+        );
+        CREATE TABLE IF NOT EXISTS sessions (
+            token_hash TEXT PRIMARY KEY,
+            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            created_at TEXT NOT NULL,
+            expires_at TEXT NOT NULL,
+            user_agent TEXT
+        );
+        CREATE TABLE IF NOT EXISTS login_tokens (
+            token_hash TEXT PRIMARY KEY,
+            email TEXT NOT NULL,
+            next TEXT,
+            created_at TEXT NOT NULL,
+            expires_at TEXT NOT NULL,
+            used_at TEXT
+        );
+        CREATE INDEX IF NOT EXISTS login_tokens_email ON login_tokens(email, created_at);
         "#,
     )?;
     Ok(c)
@@ -191,6 +217,94 @@ pub fn update_fulfilment(
         params![id, status, supplier, supplier_order_id, tracking, carrier, note, now()],
     )?;
     Ok(n == 1)
+}
+
+pub fn orders_for_email(c: &Connection, email: &str) -> Result<Vec<Order>> {
+    let mut st = c.prepare(&format!("SELECT {COLS} FROM orders WHERE email = ?1 ORDER BY created_at DESC LIMIT 100"))?;
+    let rows = st.query_map([email.to_lowercase()], row)?;
+    Ok(rows.collect::<Result<_, _>>()?)
+}
+
+pub fn recent_orders(c: &Connection, limit: i64) -> Result<Vec<Order>> {
+    let mut st = c.prepare(&format!("SELECT {COLS} FROM orders ORDER BY created_at DESC LIMIT ?1"))?;
+    let rows = st.query_map([limit], row)?;
+    Ok(rows.collect::<Result<_, _>>()?)
+}
+
+/// Statuses that count as revenue.
+pub const PAID: &str = "('paid','processing','shipped','delivered')";
+
+pub fn stats(c: &Connection, since: &str) -> Result<serde_json::Value> {
+    use serde_json::json;
+    let one = |sql: &str| -> Result<f64> { Ok(c.query_row(sql, [since], |r| r.get::<_, Option<f64>>(0))?.unwrap_or(0.0)) };
+    let revenue = one(&format!("SELECT SUM(total_usd) FROM orders WHERE status IN {PAID} AND created_at >= ?1"))?;
+    let orders = one(&format!("SELECT COUNT(*) FROM orders WHERE status IN {PAID} AND created_at >= ?1"))?;
+    let abandoned = one("SELECT COUNT(*) FROM orders WHERE status = 'pending_payment' AND created_at >= ?1")?;
+    let new_subs = one("SELECT COUNT(*) FROM subscribers WHERE created_at >= ?1")?;
+    let new_customers = one("SELECT COUNT(*) FROM users WHERE created_at >= ?1")?;
+    let count_status = |st: &str| -> Result<i64> { Ok(c.query_row("SELECT COUNT(*) FROM orders WHERE status = ?1", [st], |r| r.get(0))?) };
+    let mut by_day = c.prepare(&format!(
+        "SELECT substr(created_at,1,10) d, SUM(total_usd), COUNT(*) FROM orders WHERE status IN {PAID} AND created_at >= ?1 GROUP BY d ORDER BY d"
+    ))?;
+    let days: Vec<serde_json::Value> = by_day
+        .query_map([since], |r| Ok(json!({ "date": r.get::<_, String>(0)?, "revenue": r.get::<_, f64>(1)?, "orders": r.get::<_, i64>(2)? })))?
+        .collect::<std::result::Result<_, _>>()?;
+    let mut by_country = c.prepare(&format!(
+        "SELECT json_extract(address,'$.country') cc, COUNT(*), SUM(total_usd) FROM orders WHERE status IN {PAID} AND created_at >= ?1
+         GROUP BY cc ORDER BY 3 DESC LIMIT 8"
+    ))?;
+    let countries: Vec<serde_json::Value> = by_country
+        .query_map([since], |r| Ok(json!({ "country": r.get::<_, Option<String>>(0)?, "orders": r.get::<_, i64>(1)?, "revenue": r.get::<_, f64>(2)? })))?
+        .collect::<std::result::Result<_, _>>()?;
+    let mut top = c.prepare(&format!(
+        "SELECT json_extract(j.value,'$.slug'), json_extract(j.value,'$.name'), SUM(json_extract(j.value,'$.qty')), SUM(json_extract(j.value,'$.line_usd'))
+         FROM orders o, json_each(o.items) j WHERE o.status IN {PAID} AND o.created_at >= ?1 GROUP BY 1 ORDER BY 4 DESC LIMIT 6"
+    ))?;
+    let products: Vec<serde_json::Value> = top
+        .query_map([since], |r| Ok(json!({ "slug": r.get::<_, String>(0)?, "name": r.get::<_, String>(1)?, "qty": r.get::<_, i64>(2)?, "revenue": r.get::<_, f64>(3)? })))?
+        .collect::<std::result::Result<_, _>>()?;
+    let subs_total: i64 = c.query_row("SELECT COUNT(*) FROM subscribers", [], |r| r.get(0))?;
+    let customers_total: i64 = c.query_row("SELECT COUNT(*) FROM users", [], |r| r.get(0))?;
+    Ok(json!({
+        "since": since,
+        "revenue_usd": revenue,
+        "orders": orders as i64,
+        "aov_usd": if orders > 0.0 { revenue / orders } else { 0.0 },
+        "awaiting_payment": abandoned as i64,
+        "new_subscribers": new_subs as i64,
+        "new_customers": new_customers as i64,
+        "queue": { "paid": count_status("paid")?, "processing": count_status("processing")?, "shipped": count_status("shipped")? },
+        "subscribers_total": subs_total,
+        "customers_total": customers_total,
+        "by_day": days,
+        "by_country": countries,
+        "top_products": products,
+    }))
+}
+
+pub fn subscribers(c: &Connection) -> Result<Vec<serde_json::Value>> {
+    let mut st = c.prepare("SELECT email, country, created_at FROM subscribers ORDER BY created_at DESC LIMIT 5000")?;
+    let rows = st.query_map([], |r| {
+        Ok(serde_json::json!({ "email": r.get::<_, String>(0)?, "country": r.get::<_, Option<String>>(1)?, "created_at": r.get::<_, String>(2)? }))
+    })?;
+    Ok(rows.collect::<Result<_, _>>()?)
+}
+
+pub fn customers(c: &Connection) -> Result<Vec<serde_json::Value>> {
+    let mut st = c.prepare(&format!(
+        "SELECT u.email, u.name, u.google_sub IS NOT NULL, u.created_at, u.last_login_at,
+                (SELECT COUNT(*) FROM orders o WHERE o.email = u.email AND o.status IN {PAID}),
+                (SELECT COALESCE(SUM(total_usd),0) FROM orders o WHERE o.email = u.email AND o.status IN {PAID})
+         FROM users u ORDER BY u.created_at DESC LIMIT 1000"
+    ))?;
+    let rows = st.query_map([], |r| {
+        Ok(serde_json::json!({
+            "email": r.get::<_, String>(0)?, "name": r.get::<_, Option<String>>(1)?, "google": r.get::<_, bool>(2)?,
+            "created_at": r.get::<_, String>(3)?, "last_login_at": r.get::<_, Option<String>>(4)?,
+            "orders": r.get::<_, i64>(5)?, "spent_usd": r.get::<_, f64>(6)?,
+        }))
+    })?;
+    Ok(rows.collect::<Result<_, _>>()?)
 }
 
 pub fn subscribe(c: &Connection, email: &str, country: Option<&str>) -> Result<bool> {

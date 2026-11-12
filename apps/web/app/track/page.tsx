@@ -35,7 +35,7 @@ export default function Track() {
       <form onSubmit={submit}>
         <div className="field">
           <label htmlFor="id">Order number</label>
-          <input id="id" name="id" placeholder="AR-XXXXXXXX" required />
+          <input id="id" name="id" placeholder="JW-XXXXXXXX" required />
         </div>
         <div className="field">
           <label htmlFor="email">Email used at checkout</label>

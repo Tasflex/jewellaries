@@ -228,7 +228,7 @@ def spec_for(p: dict) -> Spec:
         "solene-teardrop-pendant": "tear", "milano-paperclip-chain": "paperclip",
         "riviera-tennis-necklace": "tennis", "ember-ruby-heart-necklace": "heart",
         "luna-huggie-hoops": "huggie", "aurora-crystal-drops": "drops", "petal-pearl-studs": "studs",
-        "eternity-band": "eternity", "halo-solitaire-ring": "halo", "rosso-signet-ring": "signet",
+        "eternity-band": "eternity", "halo-solitaire-ring": "halo", "scarlet-signet-ring": "signet",
         "celeste-tennis-bracelet": "tennis", "torque-cuff": "cuff", "figaro-chain-bracelet": "figaro",
     }.get(slug, "default")
     kind = {"necklaces": "necklace", "earrings": "earrings", "rings": "ring",

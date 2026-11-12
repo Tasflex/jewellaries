@@ -32,7 +32,7 @@ export default async function Shop({ searchParams }: { searchParams: SP }) {
       <section className="seo-copy">
         <h2>Everyday gold jewellery, shipped worldwide</h2>
         <p>
-          Aurum Rosso makes demi-fine jewellery for real life: 18k gold PVD over 316L surgical-grade steel that resists water,
+          Jewellariess makes demi-fine jewellery for real life: 18k gold PVD over 316L surgical-grade steel that resists water,
           sweat and tarnish. Build a necklace layer with paperclip chains and pendants, stack eternity bands with a signet, or
           pick a ready-made gift set that arrives in our signature red box. We ship to more than 190 countries, with free
           shipping on orders over $59.

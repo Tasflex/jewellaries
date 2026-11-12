@@ -1,7 +1,8 @@
 #!/bin/bash
-# Build and (re)start Aurum Rosso on the server. Idempotent; run from anywhere:
+# Build and (re)start Jewellariess on the server. Idempotent; run from anywhere:
 #   bash /var/www/jewellaries/deploy/deploy.sh            # build, restart, then render videos
 #   SKIP_VIDEOS=1 bash .../deploy.sh                      # code-only deploy
+#   IMPORT_CATALOG=1 bash .../deploy.sh                   # also reload data/catalog.json into the API
 # The site goes live before the (slow) video render; the storefront reads the
 # video manifest at runtime, so reels appear as soon as rendering finishes.
 set -euo pipefail
@@ -45,6 +46,12 @@ nginx -t && systemctl reload nginx
 log "health"
 sleep 4
 curl -fsS http://127.0.0.1:8300/health && echo " api ok"
+
+# Re-import data/catalog.json into the live database (overwrites price/stock edits made in the dashboard).
+if [ "${IMPORT_CATALOG:-0}" = "1" ]; then
+  log "catalogue import"
+  curl -fsS -X POST http://127.0.0.1:8300/v1/admin/catalog -H "Authorization: Bearer $ADMIN_TOKEN"     -H 'content-type: application/json' --data-binary @data/catalog.json && echo
+fi
 curl -fsS -o /dev/null -w "web %{http_code}\n" http://127.0.0.1:3300/
 log "site is live"
 

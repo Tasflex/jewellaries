@@ -1,4 +1,4 @@
-//! Aurum Rosso storefront API.
+//! Jewellariess storefront API.
 //!
 //! Public:  catalogue, currencies, shipping quotes, cart pricing, checkout,
 //!          payment verification, order tracking, newsletter.
@@ -8,7 +8,9 @@
 //! Prices are always recomputed here from the catalogue: the browser only
 //! sends slugs and quantities, never amounts.
 
+mod auth;
 mod db;
+mod mail;
 mod money;
 
 use axum::{
@@ -35,24 +37,35 @@ use subtle::ConstantTimeEq;
 use tower_http::{limit::RequestBodyLimitLayer, trace::TraceLayer};
 
 #[derive(Clone)]
-struct Config {
-    site_url: String,
-    admin_token: Option<String>,
-    paystack_secret: Option<String>,
-    paystack_currencies: Vec<String>,
+pub struct GoogleCfg {
+    pub client_id: String,
+    pub client_secret: String,
 }
 
 #[derive(Clone)]
-struct AppState {
-    db: Arc<Mutex<Connection>>,
-    catalog: Arc<RwLock<Value>>,
-    rates: Arc<RwLock<HashMap<String, f64>>>,
-    cfg: Arc<Config>,
-    http: reqwest::Client,
+pub struct Config {
+    pub site_url: String,
+    pub admin_token: Option<String>,
+    pub admin_emails: Vec<String>,
+    pub paystack_secret: Option<String>,
+    pub paystack_currencies: Vec<String>,
+    pub google: Option<GoogleCfg>,
+    pub resend_key: Option<String>,
+    pub mail_from: String,
+    pub reply_to: String,
+}
+
+#[derive(Clone)]
+pub struct AppState {
+    pub db: Arc<Mutex<Connection>>,
+    pub catalog: Arc<RwLock<Value>>,
+    pub rates: Arc<RwLock<HashMap<String, f64>>>,
+    pub cfg: Arc<Config>,
+    pub http: reqwest::Client,
 }
 
 // ---------- errors ----------
-struct ApiError(StatusCode, String);
+pub struct ApiError(pub StatusCode, pub String);
 
 impl IntoResponse for ApiError {
     fn into_response(self) -> Response {
@@ -67,11 +80,17 @@ impl From<anyhow::Error> for ApiError {
     }
 }
 
-fn bad(msg: impl Into<String>) -> ApiError {
+impl From<rusqlite::Error> for ApiError {
+    fn from(e: rusqlite::Error) -> Self {
+        anyhow::Error::from(e).into()
+    }
+}
+
+pub fn bad(msg: impl Into<String>) -> ApiError {
     ApiError(StatusCode::BAD_REQUEST, msg.into())
 }
 
-type ApiResult<T> = Result<T, ApiError>;
+pub type ApiResult<T> = Result<T, ApiError>;
 
 // ---------- catalogue ----------
 fn products(cat: &Value) -> Vec<Value> {
@@ -341,10 +360,10 @@ fn order_id() -> String {
     const A: &[u8] = b"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let mut r = rand::thread_rng();
     let s: String = (0..8).map(|_| A[r.gen_range(0..A.len())] as char).collect();
-    format!("AR-{s}")
+    format!("JW-{s}")
 }
 
-fn valid_email(e: &str) -> bool {
+pub fn valid_email(e: &str) -> bool {
     let e = e.trim();
     e.len() <= 254 && e.contains('@') && e.rsplit('@').next().map_or(false, |d| d.contains('.')) && !e.contains(' ')
 }
@@ -456,7 +475,13 @@ async fn confirm_with_paystack(s: &AppState, reference: &str) -> anyhow::Result<
         && d["currency"].as_str() == Some(order.charge_currency.as_str())
         && d["amount"].as_i64() == Some((order.charge_amount * 100.0).round() as i64);
     if paid {
-        db::mark_paid(&s.db.lock().unwrap(), reference, d["reference"].as_str().unwrap_or(reference))?;
+        let newly = db::mark_paid(&s.db.lock().unwrap(), reference, d["reference"].as_str().unwrap_or(reference))?;
+        if newly {
+            let order = db::get_order(&s.db.lock().unwrap(), reference)?;
+            if let Some(o) = order {
+                mail::send(s, &o.email, &format!("Order {} confirmed", o.id), &mail::order_paid(&o, &s.cfg.site_url)).await;
+            }
+        }
     }
     Ok(paid)
 }
@@ -529,15 +554,24 @@ async fn newsletter(State(s): State<AppState>, Json(r): Json<SubReq>) -> ApiResu
 }
 
 // ---------- admin ----------
+/// Admin = the server-side worker's bearer token, or a signed-in admin's session
+/// cookie (in which case cross-site requests are refused).
 fn require_admin(s: &AppState, h: &HeaderMap) -> ApiResult<()> {
-    let Some(tok) = s.cfg.admin_token.as_deref() else {
-        return Err(ApiError(StatusCode::NOT_FOUND, "not found".into()));
-    };
-    let got = h.get("authorization").and_then(|v| v.to_str().ok()).and_then(|v| v.strip_prefix("Bearer ")).unwrap_or("");
-    if got.as_bytes().ct_eq(tok.as_bytes()).unwrap_u8() == 1 {
-        Ok(())
-    } else {
-        Err(ApiError(StatusCode::UNAUTHORIZED, "unauthorized".into()))
+    if let Some(tok) = s.cfg.admin_token.as_deref() {
+        let got = h.get("authorization").and_then(|v| v.to_str().ok()).and_then(|v| v.strip_prefix("Bearer ")).unwrap_or("");
+        if !got.is_empty() && got.as_bytes().ct_eq(tok.as_bytes()).unwrap_u8() == 1 {
+            return Ok(());
+        }
+    }
+    if let Some(origin) = h.get("origin").and_then(|v| v.to_str().ok()) {
+        if origin.trim_end_matches('/') != s.cfg.site_url {
+            return Err(ApiError(StatusCode::FORBIDDEN, "cross-site request refused".into()));
+        }
+    }
+    match auth::current_user(s, h) {
+        Some(u) if u.role == "admin" => Ok(()),
+        Some(_) => Err(ApiError(StatusCode::FORBIDDEN, "admins only".into())),
+        None => Err(ApiError(StatusCode::UNAUTHORIZED, "unauthorized".into())),
     }
 }
 
@@ -554,13 +588,79 @@ async fn admin_catalog(State(s): State<AppState>, h: HeaderMap, Json(v): Json<Va
 
 #[derive(Deserialize)]
 struct StatusQuery {
-    status: String,
+    status: Option<String>,
 }
 
 async fn admin_orders(State(s): State<AppState>, h: HeaderMap, Query(q): Query<StatusQuery>) -> ApiResult<Json<Value>> {
     require_admin(&s, &h)?;
-    let list = db::orders_by_status(&s.db.lock().unwrap(), &q.status, 200)?;
+    let c = s.db.lock().unwrap();
+    let list = match q.status.as_deref().filter(|x| !x.is_empty()) {
+        Some(st) => db::orders_by_status(&c, st, 500)?,
+        None => db::recent_orders(&c, 300)?,
+    };
     Ok(Json(json!({ "orders": list })))
+}
+
+#[derive(Deserialize)]
+struct DaysQuery {
+    days: Option<i64>,
+}
+
+async fn admin_stats(State(s): State<AppState>, h: HeaderMap, Query(q): Query<DaysQuery>) -> ApiResult<Json<Value>> {
+    require_admin(&s, &h)?;
+    let days = q.days.unwrap_or(30).clamp(1, 365);
+    let since = (chrono::Utc::now() - chrono::Duration::days(days)).to_rfc3339();
+    let v = db::stats(&s.db.lock().unwrap(), &since)?;
+    Ok(Json(v))
+}
+
+async fn admin_subscribers(State(s): State<AppState>, h: HeaderMap) -> ApiResult<Json<Value>> {
+    require_admin(&s, &h)?;
+    let v = db::subscribers(&s.db.lock().unwrap())?;
+    Ok(Json(json!({ "subscribers": v })))
+}
+
+async fn admin_customers(State(s): State<AppState>, h: HeaderMap) -> ApiResult<Json<Value>> {
+    require_admin(&s, &h)?;
+    let v = db::customers(&s.db.lock().unwrap())?;
+    Ok(Json(json!({ "customers": v })))
+}
+
+#[derive(Deserialize)]
+struct ProductPatch {
+    price: Option<f64>,
+    compare_at: Option<f64>,
+    stock: Option<i64>,
+}
+
+/// Quick edits from the dashboard: price, compare-at price, stock.
+async fn admin_product(State(s): State<AppState>, h: HeaderMap, Path(slug): Path<String>, Json(p): Json<ProductPatch>) -> ApiResult<Json<Value>> {
+    require_admin(&s, &h)?;
+    let bad_price = p.price.is_some_and(|x| !(1.0..=10000.0).contains(&x));
+    let bad_cmp = p.compare_at.is_some_and(|x| !(0.0..=20000.0).contains(&x));
+    let bad_stock = p.stock.is_some_and(|x| !(0..=100000).contains(&x));
+    if bad_price || bad_cmp || bad_stock {
+        return Err(bad("value out of range"));
+    }
+    let mut cat = s.catalog.read().unwrap().clone();
+    let updated = {
+        let Some(prod) = cat["products"].as_array_mut().and_then(|a| a.iter_mut().find(|x| x["slug"] == slug.as_str())) else {
+            return Err(ApiError(StatusCode::NOT_FOUND, "no such product".into()));
+        };
+        if let Some(x) = p.price {
+            prod["price"] = json!(x);
+        }
+        if let Some(x) = p.compare_at {
+            prod["compare_at"] = json!(x);
+        }
+        if let Some(x) = p.stock {
+            prod["stock"] = json!(x);
+        }
+        prod.clone()
+    };
+    db::save_catalog(&s.db.lock().unwrap(), &cat)?;
+    *s.catalog.write().unwrap() = cat;
+    Ok(Json(json!({ "ok": true, "product": updated })))
 }
 
 #[derive(Deserialize)]
@@ -579,12 +679,20 @@ async fn admin_fulfil(State(s): State<AppState>, h: HeaderMap, Path(id): Path<St
     if !OK.contains(&r.status.as_str()) {
         return Err(bad("unknown status"));
     }
+    let before = db::get_order(&s.db.lock().unwrap(), &id)?;
     let ok = db::update_fulfilment(
         &s.db.lock().unwrap(), &id, &r.status, r.supplier.as_deref(), r.supplier_order_id.as_deref(),
         r.tracking_number.as_deref(), r.carrier.as_deref(), r.note.as_deref(),
     )?;
     if !ok {
         return Err(ApiError(StatusCode::NOT_FOUND, "no such order".into()));
+    }
+    // Email the customer once, when the order first becomes "shipped" with a tracking number.
+    if r.status == "shipped" && before.as_ref().is_some_and(|b| b.status != "shipped") {
+        let order = db::get_order(&s.db.lock().unwrap(), &id)?;
+        if let Some(o) = order.filter(|o| o.tracking_number.is_some()) {
+            mail::send(&s, &o.email, &format!("Your order {} has shipped", o.id), &mail::order_shipped(&o, &s.cfg.site_url)).await;
+        }
     }
     Ok(Json(json!({ "ok": true })))
 }
@@ -628,6 +736,18 @@ fn app(state: AppState) -> Router {
         .route("/v1/admin/catalog", post(admin_catalog))
         .route("/v1/admin/orders", get(admin_orders))
         .route("/v1/admin/orders/:id/fulfilment", post(admin_fulfil))
+        .route("/v1/admin/stats", get(admin_stats))
+        .route("/v1/admin/subscribers", get(admin_subscribers))
+        .route("/v1/admin/customers", get(admin_customers))
+        .route("/v1/admin/products/:slug", axum::routing::patch(admin_product))
+        .route("/v1/auth/providers", get(auth::providers))
+        .route("/v1/auth/me", get(auth::me))
+        .route("/v1/auth/logout", post(auth::logout))
+        .route("/v1/auth/google/start", get(auth::google_start))
+        .route("/v1/auth/google/callback", get(auth::google_callback))
+        .route("/v1/auth/email", post(auth::email_start))
+        .route("/v1/auth/email/confirm", post(auth::email_confirm))
+        .route("/v1/account/orders", get(auth::account_orders))
         .layer(RequestBodyLimitLayer::new(512 * 1024))
         .layer(TraceLayer::new_for_http())
         .with_state(state)
@@ -661,10 +781,26 @@ async fn main() -> anyhow::Result<()> {
             .split(',')
             .map(|c| c.trim().to_uppercase())
             .collect(),
+        admin_emails: env("ADMIN_EMAILS")
+            .unwrap_or_default()
+            .split(',')
+            .map(|e| e.trim().to_lowercase())
+            .filter(|e| !e.is_empty())
+            .collect(),
+        google: match (env("GOOGLE_CLIENT_ID"), env("GOOGLE_CLIENT_SECRET")) {
+            (Some(client_id), Some(client_secret)) => Some(GoogleCfg { client_id, client_secret }),
+            _ => None,
+        },
+        resend_key: env("RESEND_API_KEY"),
+        mail_from: env("MAIL_FROM").unwrap_or_else(|| "Jewellariess <hello@jewellariess.com>".into()),
+        reply_to: env("MAIL_REPLY_TO").unwrap_or_else(|| "hello@jewellariess.com".into()),
     };
     tracing::info!(
-        "payments: {}",
-        if cfg.paystack_secret.is_some() { "paystack" } else { "manual (no PAYSTACK_SECRET_KEY)" }
+        "payments: {} | google sign-in: {} | email: {} | admins: {}",
+        if cfg.paystack_secret.is_some() { "paystack" } else { "manual (no PAYSTACK_SECRET_KEY)" },
+        if cfg.google.is_some() { "on" } else { "off" },
+        if cfg.resend_key.is_some() { "on" } else { "off" },
+        cfg.admin_emails.len()
     );
     let state = AppState {
         db: Arc::new(Mutex::new(conn)),

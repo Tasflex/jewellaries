@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "Aurum Rosso",
+    "name": "Jewellariess",
     "tagline": "Jewellery that catches the light.",
     "free_shipping_usd": 59,
     "currency": "USD"
@@ -297,8 +297,8 @@
       }
     },
     {
-      "slug": "rosso-signet-ring",
-      "name": "Rosso Signet",
+      "slug": "scarlet-signet-ring",
+      "name": "Scarlet Signet",
       "category": "rings",
       "price": 45,
       "compare_at": 69,
@@ -306,7 +306,7 @@
       "metal": "gold",
       "stone": "ruby",
       "short": "Our namesake: a polished signet with a deep red stone.",
-      "description": "The Rosso Signet is the piece our brand is named after. A polished oval face holds a single deep-red stone, a little bit of power dressing for every day.",
+      "description": "The Scarlet Signet is our boldest ring: a polished oval face holding a single deep-red stone, a little bit of power dressing for every day.",
       "highlights": [
         "Lab-created ruby-red stone",
         "Polished oval face",
@@ -451,7 +451,7 @@
       "cost": 21.4,
       "metal": "gold",
       "stone": "ruby",
-      "short": "Eternity + Halo + Rosso Signet. A ready-made ring stack.",
+      "short": "Eternity + Halo + Scarlet Signet. A ready-made ring stack.",
       "description": "Our three bestselling rings, chosen to stack with no gaps. Pick one size and we'll match all three.",
       "highlights": [
         "3 stackable rings",
@@ -468,7 +468,7 @@
       "bundle": [
         "eternity-band",
         "halo-solitaire-ring",
-        "rosso-signet-ring"
+        "scarlet-signet-ring"
       ],
       "supplier": {
         "name": "cj",

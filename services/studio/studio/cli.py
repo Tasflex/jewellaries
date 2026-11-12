@@ -1,4 +1,4 @@
-"""Aurum Rosso studio: product renders, short-form videos, social copy, supplier sync, fulfilment.
+"""Jewellariess studio: product renders, short-form videos, social copy, supplier sync, fulfilment.
 
     python -m studio render                 # product images  -> apps/web/public/media/products
     python -m studio videos --jobs 4        # 9:16 videos     -> apps/web/public/media/videos
@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[3]
 CATALOG = ROOT / "data" / "catalog.json"
 MEDIA = ROOT / "apps" / "web" / "public" / "media"
 MANIFEST = ROOT / "data" / "social" / "manifest.json"
-SITE_URL = os.getenv("SITE_URL", "https://aurumrosso.com").rstrip("/")
+SITE_URL = os.getenv("SITE_URL", "https://jewellariess.com").rstrip("/")
 API_URL = os.getenv("API_URL", "http://127.0.0.1:8300").rstrip("/")
 
 
@@ -62,7 +62,8 @@ def write_manifest(entries: list[dict]):
     existing = {}
     if MANIFEST.exists():
         for v in json.loads(MANIFEST.read_text(encoding="utf-8")).get("videos", []):
-            existing[(v["slug"], v["format"])] = v
+            if v["slug"] in by:  # drop videos of products that no longer exist
+                existing[(v["slug"], v["format"])] = v
     for e in entries:
         p = by[e["slug"]]
         copy = social.caption_for(p, e["format"], e["hook"], SITE_URL)

@@ -1,4 +1,4 @@
-# Aurum Rosso: jewellery that catches the light
+# Jewellariess: jewellery that catches the light
 
 A worldwide dropshipping jewellery store. It has three parts:
 

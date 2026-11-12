@@ -99,7 +99,8 @@ export default async function Home() {
               const hero = c.products.find((p) => p.category === k.slug && p.tags.includes("bestseller")) ?? c.products.find((p) => p.category === k.slug);
               return (
                 <Link key={k.slug} href={`/shop/${k.slug}`} className="cat">
-                  {hero && <Image src={`/media/products/${hero.slug}-1.webp`} alt="" fill sizes="(max-width: 560px) 50vw, 20vw" />}
+                  {hero && <Image src={`/media/products/${hero.slug}-1.webp`} alt="" fill sizes="(max-width: 560px) 50vw, 20vw" className="on-dark" />}
+                  {hero && <Image src={`/media/products/${hero.slug}-2.webp`} alt="" fill sizes="(max-width: 560px) 50vw, 20vw" className="on-light" />}
                   <span>{k.name}</span>
                 </Link>
               );
@@ -150,7 +151,7 @@ export default async function Home() {
       </section>
 
       {edit && layerPieces.length > 0 && (
-        <section className="section light" style={{ background: "var(--ivory-2)" }}>
+        <section className="section light" style={{ background: "var(--band-bg-2)" }}>
           <div className="wrap">
             <div className="section-head">
               <div>

@@ -45,7 +45,7 @@ export const ARTICLES: Article[] = [
       {
         h: "How to stop layered necklaces tangling",
         p: [
-          "Use different chain weights, since heavier chains sit still and lighter ones float above them. A layering clasp (a single bar clasp with several hooks) helps, and so does fastening the longest necklace first. Store them hanging or in separate pouches. Every Aurum Rosso set arrives with each piece wrapped separately for exactly this reason.",
+          "Use different chain weights, since heavier chains sit still and lighter ones float above them. A layering clasp (a single bar clasp with several hooks) helps, and so does fastening the longest necklace first. Store them hanging or in separate pouches. Every Jewellariess set arrives with each piece wrapped separately for exactly this reason.",
         ],
       },
     ],
@@ -56,7 +56,7 @@ export const ARTICLES: Article[] = [
     description: "How to build a ring stack that looks intentional: the anchor, the sparkle and the statement, plus sizing tips for stacked rings.",
     date: "2026-11-04",
     hero: "the-stack-trio",
-    shop: ["the-stack-trio", "eternity-band", "halo-solitaire-ring", "rosso-signet-ring"],
+    shop: ["the-stack-trio", "eternity-band", "halo-solitaire-ring", "scarlet-signet-ring"],
     sections: [
       { p: ["A good ring stack has a rhythm. Think of it as three roles: an anchor band, a sparkle and a statement."] },
       { h: "The anchor", p: ["A slim full-eternity band sits closest to the hand and gives the stack a base of continuous light."] },

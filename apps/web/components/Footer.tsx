@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="wrap footer-top">
         <div className="footer-brand">
           <p className="logo">
-            AURUM <span>ROSSO</span>
+            JEWELLARI<span>ESS</span>
           </p>
           <p className="muted">{SITE.tagline} Waterproof, hypoallergenic, and made to be layered and gifted.</p>
           <Newsletter dark />

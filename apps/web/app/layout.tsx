@@ -52,7 +52,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const [cat, rates] = await Promise.all([getCatalog(), getRates()]);
   const mini = cat.products.map(({ slug, name, price, category }) => ({ slug, name, price, category }));
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`} data-theme="dark" suppressHydrationWarning>
+      <head>
+        {/* Apply the saved (or device) theme before first paint: no light/dark flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("jw_theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?"#fbf8f2":"#0b0a0c")}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         <a href="#main" className="sr-only">
           Skip to content

@@ -37,7 +37,7 @@ ROSSO = (200, 16, 46)
 # Phone-safe zone: platform UI covers the top bar, the right-hand action rail
 # and the caption block at the bottom.
 SAFE_TOP, SAFE_BOTTOM, SAFE_LEFT, SAFE_RIGHT = 210, 1480, 80, 170
-BRAND = "AURUM ROSSO"
+BRAND = "JEWELLARIESS"
 
 
 # ---------- easing ----------
@@ -558,7 +558,7 @@ def _box_static() -> tuple[Image.Image, Image.Image]:
     df.rectangle([w / 2 - w * 0.02, by0, w / 2 + w * 0.02, by1], fill=gold[1] + (255,))
     df.line([(w / 2 - w * 0.011, by0), (w / 2 - w * 0.011, by1)], fill=gold[2] + (255,), width=3 * s)
     f = font("sans", 22 * s, 600)
-    df.text((w / 2, by1 - h * 0.03), "A U R U M   R O S S O", font=f, fill=gold[2] + (230,), anchor="mm")
+    df.text((w / 2, by1 - h * 0.03), "J E W E L L A R I E S S", font=f, fill=gold[2] + (230,), anchor="mm")
     return back.resize((W, H), Image.LANCZOS), front.resize((W, H), Image.LANCZOS)
 
 
