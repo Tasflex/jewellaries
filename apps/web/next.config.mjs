@@ -2,6 +2,8 @@
 const API_URL = process.env.API_URL || "http://127.0.0.1:8300";
 
 const nextConfig = {
+  // Stamped at build time: the sitemap uses it as an honest "last modified" date.
+  env: { BUILD_DATE: new Date().toISOString() },
   poweredByHeader: false,
   reactStrictMode: true,
   images: {

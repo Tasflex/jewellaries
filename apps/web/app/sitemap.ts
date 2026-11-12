@@ -7,7 +7,8 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [c, videos] = await Promise.all([getCatalog(), getVideos()]);
-  const now = new Date();
+  // Last deploy, not "now": a lastmod that changes on every request teaches Google to ignore it.
+  const now = new Date(process.env.BUILD_DATE || Date.now());
   const page = (path: string, priority: number, changeFrequency: "daily" | "weekly" | "monthly" = "weekly") => ({
     url: abs(path),
     lastModified: now,
