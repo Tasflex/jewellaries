@@ -251,7 +251,7 @@ pub async fn email_start(State(s): State<AppState>, Json(r): Json<EmailReq>) -> 
         params![hash(&token), email, next, now, (chrono::Utc::now() + chrono::Duration::minutes(15)).to_rfc3339()],
     )?;
     let link = format!("{}/login/confirm?token={token}", s.cfg.site_url);
-    mail::send(&s, &email, "Your Jewellariess sign-in link", &mail::sign_in(&link)).await;
+    mail::send(&s, &email, "Your Jewellariess sign-in link", &mail::sign_in(&link, &s.cfg.site_url)).await;
     Ok(Json(json!({ "ok": true })))
 }
 

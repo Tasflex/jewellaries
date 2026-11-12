@@ -27,7 +27,7 @@ fn esc(s: &str) -> String {
 }
 
 /// Shared shell: dark band with the wordmark, ivory body, one red button.
-fn shell(title: &str, body_html: &str, cta: Option<(&str, &str)>) -> String {
+fn shell(site: &str, title: &str, body_html: &str, cta: Option<(&str, &str)>) -> String {
     let button = cta
         .map(|(label, url)| {
             format!(
@@ -41,21 +41,24 @@ fn shell(title: &str, body_html: &str, cta: Option<(&str, &str)>) -> String {
         r#"<!doctype html><html><body style="margin:0;background:#f3ede2;font-family:Helvetica,Arial,sans-serif;color:#1b1716">
 <table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px">
 <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fbf8f2;border-radius:14px;overflow:hidden">
-<tr><td style="background:#0b0a0c;padding:22px 28px;color:#e8d3a2;letter-spacing:6px;font-weight:700;font-size:14px">JEWELLARI<span style="color:#e0213f">ESS</span></td></tr>
+<tr><td style="background:#0b0a0c;padding:20px 28px"><a href="{}"><img src="{}/logo-email.png" width="220" height="39" alt="JEWELLARIESS" style="display:block;border:0;color:#e8d3a2;font-weight:700;letter-spacing:6px;font-size:14px"></a></td></tr>
 <tr><td style="padding:28px">
 <h1 style="font-family:Georgia,serif;font-weight:600;font-size:26px;margin:0 0 14px">{}</h1>
 {}{}
 <p style="color:#6d645c;font-size:12px;margin-top:28px">Jewellariess · Jewellery that catches the light · Ships worldwide</p>
 </td></tr></table></td></tr></table></body></html>"#,
+        esc(site),
+        esc(site),
         esc(title),
         body_html,
         button
     )
 }
 
-pub fn sign_in(link: &str) -> Mail {
+pub fn sign_in(link: &str, site: &str) -> Mail {
     Mail {
         html: shell(
+            site,
             "Your sign-in link",
             r#"<p>Tap the button to sign in to your Jewellariess account. The link works once and expires in 15 minutes.</p>
 <p style="color:#6d645c;font-size:13px">Didn't ask for this? You can ignore this email; nobody can sign in without the link.</p>"#,
@@ -80,6 +83,7 @@ pub fn order_paid(o: &Order, site: &str) -> Mail {
     let url = format!("{site}/track");
     Mail {
         html: shell(
+            site,
             "Thank you, your order is confirmed",
             &format!(
                 "<p>Order <b>{}</b> · {} {:.2}</p><ul>{h}</ul><p>We're preparing it now, and it will arrive in our signature red box. We'll email you the tracking number as soon as it ships.</p>",
@@ -96,6 +100,7 @@ pub fn order_shipped(o: &Order, site: &str) -> Mail {
     let url = format!("https://parcelsapp.com/en/tracking/{tn}");
     Mail {
         html: shell(
+            site,
             "Your order is on its way",
             &format!(
                 "<p>Order <b>{}</b> has shipped{}.</p><p>Tracking number: <b>{}</b></p><p>You can also check it any time at <a href=\"{site}/track\">{site}/track</a>.</p>",
