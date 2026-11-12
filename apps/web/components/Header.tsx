@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CURRENCIES } from "@/lib/currency";
+import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { useStore } from "./store";
 
@@ -56,7 +57,7 @@ export default function Header() {
             <span className="burger" />
           </button>
           <Link href="/" className="logo" aria-label="Jewellariess home">
-            JEWELLARI<span>ESS</span>
+            <Logo height={30} />
           </Link>
           <nav className={`main-nav ${open ? "open" : ""}`} aria-label="Main">
             {NAV.map((n) => (

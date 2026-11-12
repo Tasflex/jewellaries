@@ -5,6 +5,7 @@ import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
+import { LogoSymbol } from "@/components/Logo";
 import { StoreProvider } from "@/components/store";
 import { getCatalog } from "@/lib/catalog";
 import { FALLBACK_RATES } from "@/lib/currency";
@@ -64,6 +65,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <GtmNoscript />
+        <LogoSymbol />
         <GtmHead />
         <a href="#main" className="sr-only">
           Skip to content

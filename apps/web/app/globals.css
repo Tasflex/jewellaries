@@ -41,6 +41,9 @@
   --band-bg-2: #efe7d8;
   --band-fg: #1b1716;
   --shadow: rgba(0, 0, 0, 0.5);
+  --logo-ink: #e8d3a2;
+  --logo-gold: #d4af37;
+  --logo-red: #e0213f;
   color-scheme: dark;
 }
 
@@ -1497,6 +1500,9 @@ details.acc p {
   --band-bg-2: #ece2d1;
   --band-fg: #1b1716;
   --shadow: rgba(60, 40, 20, 0.18);
+  --logo-ink: #5e470f;
+  --logo-gold: #9a7618;
+  --logo-red: #c8102e;
   color-scheme: light;
 }
 :root[data-theme="light"] .site-footer .logo,
@@ -1981,4 +1987,28 @@ details.acc p {
 }
 .consent p {
   margin: 0;
+}
+
+/* image logo */
+.logo-svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.site-header .logo {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 960px) {
+  .site-header .logo-svg {
+    width: 150px;
+  }
+}
+@media (max-width: 380px) {
+  .site-header .logo-svg {
+    width: 128px;
+  }
+}
+.footer-brand .logo-svg {
+  width: 210px;
 }

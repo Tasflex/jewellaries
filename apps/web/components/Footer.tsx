@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { CurrencySelect } from "./Header";
+import Logo from "./Logo";
 import { Newsletter } from "./bits";
 
 export default function Footer() {
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="wrap footer-top">
         <div className="footer-brand">
           <p className="logo">
-            JEWELLARI<span>ESS</span>
+            <Logo height={36} />
           </p>
           <p className="muted">{SITE.tagline} Waterproof, hypoallergenic, and made to be layered and gifted.</p>
           <Newsletter dark />
