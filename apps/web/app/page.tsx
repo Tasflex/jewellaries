@@ -16,7 +16,11 @@ export default async function Home() {
   const by = Object.fromEntries(c.products.map((p) => [p.slug, p]));
   const heroVid = videos.find((v) => v.slug === "solene-teardrop-pendant" && v.format === "glint") ?? videos.find((v) => v.format === "glint");
   const heroProduct = heroVid ? by[heroVid.slug] : c.products[0];
-  const bestsellers = c.products.filter((p) => p.tags.includes("bestseller")).slice(0, 8);
+  // Bestsellers first, topped up with other pieces so the grid always fills two rows.
+  const bestsellers = [
+    ...c.products.filter((p) => p.tags.includes("bestseller")),
+    ...c.products.filter((p) => !p.tags.includes("bestseller") && p.category !== "gift-sets"),
+  ].slice(0, 8);
   const reels = videos.slice(0, 10);
   const giftVid = videos.find((v) => v.slug === "midnight-gift-box" && v.format === "unboxing") ?? videos.find((v) => v.format === "unboxing");
   const edit = by["the-layering-edit"];

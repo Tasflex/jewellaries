@@ -348,11 +348,13 @@ p {
     background: var(--onyx);
     border-bottom: 1px solid var(--line);
     transform: translateY(-120%);
-    transition: transform 0.3s;
+    visibility: hidden;
+    transition: transform 0.3s, visibility 0.3s;
     z-index: -1;
   }
   .main-nav.open {
     transform: none;
+    visibility: visible;
   }
   .main-nav a {
     padding: 1rem 20px;
