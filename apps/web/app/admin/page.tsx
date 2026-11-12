@@ -146,7 +146,9 @@ async function Overview({ days }: { days: number }) {
                 {s.by_country.map((c) => (
                   <tr key={c.country ?? "?"}>
                     <td>{c.country ?? "Unknown"}</td>
-                    <td className="num">{c.orders} orders</td>
+                    <td className="num">
+                      {c.orders} order{c.orders === 1 ? "" : "s"}
+                    </td>
                     <td className="num">{usd(c.revenue)}</td>
                   </tr>
                 ))}

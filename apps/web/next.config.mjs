@@ -12,6 +12,10 @@ const nextConfig = {
     // The browser talks to /api/*; Next forwards it to the Rust API on the same host.
     return [{ source: "/api/:path*", destination: `${API_URL}/v1/:path*` }];
   },
+  async redirects() {
+    // renamed products keep their search ranking and any shared links
+    return [{ source: "/product/rosso-signet-ring", destination: "/product/scarlet-signet-ring", permanent: true }];
+  },
   async headers() {
     return [
       {

@@ -61,8 +61,14 @@ export default function RevenueChart({ days, span }: { days: Day[]; span: number
             );
           })}
           <line x1={padL} x2={W} y1={y(0)} y2={y(0)} className="chart-base" />
-          {[0, Math.floor(series.length / 2), series.length - 1].map((i) => (
-            <text key={i} x={padL + i * bw + bw / 2} y={H - 6} className="chart-axis" textAnchor="middle">
+          {[0, Math.floor(series.length / 2), series.length - 1].map((i, k) => (
+            <text
+              key={i}
+              x={k === 0 ? padL : k === 2 ? W : padL + i * bw + bw / 2}
+              y={H - 6}
+              className="chart-axis"
+              textAnchor={k === 0 ? "start" : k === 2 ? "end" : "middle"}
+            >
               {new Date(series[i].date).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
             </text>
           ))}

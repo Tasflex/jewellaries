@@ -27,6 +27,14 @@ log "studio: python venv"
 log "studio: product renders"
 (cd services/studio && nice -n 10 .venv/bin/python -m studio render >/dev/null)
 
+log "api: restart"
+cp deploy/aurum-api.service /etc/systemd/system/ && systemctl daemon-reload && systemctl restart aurum-api && sleep 2
+# Re-import data/catalog.json into the live database (overwrites price/stock edits made in the dashboard).
+if [ "${IMPORT_CATALOG:-0}" = "1" ]; then
+  log "catalogue import"
+  curl -fsS -X POST http://127.0.0.1:8300/v1/admin/catalog -H "Authorization: Bearer $ADMIN_TOKEN"     -H 'content-type: application/json' --data-binary @data/catalog.json && echo
+fi
+
 log "web: npm ci + build"
 (cd apps/web && npm ci --no-audit --no-fund --loglevel=error --fetch-retries=6 --fetch-retry-mintimeout=5000 && nice -n 10 npm run build)
 
@@ -47,11 +55,6 @@ log "health"
 sleep 4
 curl -fsS http://127.0.0.1:8300/health && echo " api ok"
 
-# Re-import data/catalog.json into the live database (overwrites price/stock edits made in the dashboard).
-if [ "${IMPORT_CATALOG:-0}" = "1" ]; then
-  log "catalogue import"
-  curl -fsS -X POST http://127.0.0.1:8300/v1/admin/catalog -H "Authorization: Bearer $ADMIN_TOKEN"     -H 'content-type: application/json' --data-binary @data/catalog.json && echo
-fi
 curl -fsS -o /dev/null -w "web %{http_code}\n" http://127.0.0.1:3300/
 log "site is live"
 
