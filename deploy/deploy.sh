@@ -3,6 +3,7 @@
 #   bash /var/www/jewellaries/deploy/deploy.sh            # build, restart, then render videos
 #   SKIP_VIDEOS=1 bash .../deploy.sh                      # code-only deploy
 #   IMPORT_CATALOG=1 bash .../deploy.sh                   # also reload data/catalog.json into the API
+#   SKIP_PULL=1 bash .../deploy.sh                        # code already updated from a git bundle (private repo)
 # The site goes live before the (slow) video render; the storefront reads the
 # video manifest at runtime, so reels appear as soon as rendering finishes.
 set -euo pipefail
@@ -11,8 +12,12 @@ cd "$APP"
 export PATH="/root/.cargo/bin:$PATH"
 log() { echo "== $(date +%H:%M:%S) $*"; }
 
-log "pull"
-git pull --ff-only
+if [ "${SKIP_PULL:-0}" = "1" ]; then
+  log "pull skipped (code delivered as a git bundle)"
+else
+  log "pull"
+  git pull --ff-only
+fi
 
 [ -f .env ] || { echo "missing $APP/.env (copy .env.example)"; exit 1; }
 set -a; . ./.env; set +a
