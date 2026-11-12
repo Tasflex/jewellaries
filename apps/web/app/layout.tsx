@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -11,8 +11,16 @@ import { organization, website } from "@/lib/jsonld";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+// Self-hosted (OFL) variable fonts: no build-time download, no third-party request for visitors.
+const serif = localFont({
+  src: [
+    { path: "./fonts/CormorantGaramond.ttf", style: "normal", weight: "300 700" },
+    { path: "./fonts/CormorantGaramond-Italic.ttf", style: "italic", weight: "300 700" },
+  ],
+  variable: "--font-serif",
+  display: "swap",
+});
+const sans = localFont({ src: "./fonts/Inter.ttf", weight: "100 900", variable: "--font-sans", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
