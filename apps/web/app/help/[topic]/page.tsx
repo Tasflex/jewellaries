@@ -12,7 +12,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: P }): Promise<Metadata> {
-  const h = HELP.find((x) => x.slug === (await params).topic);
+  const { topic } = await params;
+  const h = HELP.find((x) => x.slug === topic);
   if (!h) return {};
   return { title: h.title, description: h.description, alternates: { canonical: `/help/${h.slug}` } };
 }
