@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: SITE.name, description: SITE.description },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-video-preview": -1 } },
   formatDetection: { telephone: false },
+  other: { "netaffil-verification": "na-ace010a065e989cdcdd7fe1e08676b2a" },
 };
 
 export const viewport: Viewport = { themeColor: "#0b0a0c", width: "device-width", initialScale: 1 };
