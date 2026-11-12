@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToBag from "@/components/AddToBag";
+import { TrackViewItem } from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 import ProductCard from "@/components/ProductCard";
 import Reel from "@/components/Reel";
@@ -58,6 +59,7 @@ export default async function ProductPage({ params }: { params: P }) {
   const recs = related(c, p);
   return (
     <div className="wrap">
+      <TrackViewItem slug={p.slug} name={p.name} price={p.price} category={p.category} />
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link href="/">Home</Link> / <Link href={`/shop/${p.category}`}>{cat?.name}</Link> / {p.name}
       </nav>

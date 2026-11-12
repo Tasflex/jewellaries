@@ -493,7 +493,18 @@ struct RefQuery {
 
 async fn verify_payment(State(s): State<AppState>, Query(q): Query<RefQuery>) -> ApiResult<Json<Value>> {
     let paid = confirm_with_paystack(&s, &q.reference).await?;
-    Ok(Json(json!({ "order_id": q.reference, "paid": paid })))
+    if !paid {
+        return Ok(Json(json!({ "order_id": q.reference, "paid": false })));
+    }
+    // Items + value for the analytics "purchase" event on the thank-you page.
+    let o = db::get_order(&s.db.lock().unwrap(), &q.reference)?;
+    Ok(Json(match o {
+        Some(o) => json!({
+            "order_id": o.id, "paid": true, "items": o.items,
+            "total_usd": o.total_usd, "shipping_usd": o.shipping_usd,
+        }),
+        None => json!({ "order_id": q.reference, "paid": true }),
+    }))
 }
 
 async fn paystack_webhook(State(s): State<AppState>, headers: HeaderMap, body: Bytes) -> StatusCode {

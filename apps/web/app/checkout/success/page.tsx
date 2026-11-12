@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useStore } from "@/components/store";
+import { track } from "@/lib/analytics";
 
 function Inner() {
   const sp = useSearchParams();
@@ -16,7 +17,22 @@ function Inner() {
       .then((r) => r.json())
       .then((j) => {
         setState(j.paid ? "paid" : "pending");
-        if (j.paid) clear();
+        if (j.paid) {
+          // fire once per order (refreshing this page must not double-count revenue)
+          let seen = false;
+          try {
+            seen = sessionStorage.getItem(`jw_purchase_${order}`) === "1";
+            sessionStorage.setItem(`jw_purchase_${order}`, "1");
+          } catch {}
+          if (!seen && Array.isArray(j.items)) {
+            track(
+              "purchase",
+              j.items.map((i: { slug: string; name: string; unit_usd: number; qty: number }) => ({ slug: i.slug, name: i.name, price: i.unit_usd, qty: i.qty })),
+              { transaction_id: order, value: j.total_usd, shipping: j.shipping_usd, currency: "USD" }
+            );
+          }
+          clear();
+        }
       })
       .catch(() => setState("pending"));
     // eslint-disable-next-line react-hooks/exhaustive-deps

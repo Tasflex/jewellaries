@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { track } from "@/lib/analytics";
 import { convert, format } from "@/lib/currency";
 
 export type CartLine = { slug: string; qty: number; size?: string | null };
@@ -84,8 +85,10 @@ export function StoreProvider({
         return next;
       });
       setDrawer(true);
+      const p = products.find((x) => x.slug === slug);
+      if (p) track("add_to_cart", [{ slug, name: p.name, price: p.price, category: p.category, qty }]);
     },
-    []
+    [products]
   );
 
   const setQty = useCallback(

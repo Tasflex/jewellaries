@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics";
 import { useStore } from "./store";
 
 export function Newsletter({ dark = false }: { dark?: boolean }) {
@@ -21,6 +22,7 @@ export function Newsletter({ dark = false }: { dark?: boolean }) {
       if (!r.ok) throw new Error(j.error || "Something went wrong");
       setState("done");
       setMsg(j.code);
+      track("sign_up", [], { method: "newsletter" });
     } catch (err) {
       setState("error");
       setMsg((err as Error).message);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useQuote } from "@/components/CartDrawer";
 import { useStore } from "@/components/store";
+import { track } from "@/lib/analytics";
 
 const COUNTRIES: [string, string][] = [
   ["US", "United States"], ["GB", "United Kingdom"], ["CA", "Canada"], ["AU", "Australia"], ["NZ", "New Zealand"],
@@ -26,6 +27,13 @@ export default function Checkout() {
   const [err, setErr] = useState<string | null>(null);
   const [done, setDone] = useState<{ id: string } | null>(null);
   useEffect(() => setCountry(guessed), [guessed]);
+  const { products } = useStore();
+  const [tracked, setTracked] = useState(false);
+  useEffect(() => {
+    if (tracked || !cart.length || !Object.keys(products).length) return;
+    track("begin_checkout", cart.flatMap((l) => (products[l.slug] ? [{ slug: l.slug, name: products[l.slug].name, price: products[l.slug].price, category: products[l.slug].category, qty: l.qty }] : [])));
+    setTracked(true);
+  }, [cart, products, tracked]);
   const { quote, error } = useQuote({ promo: appliedPromo, shipping, country });
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {

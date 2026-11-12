@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { ConsentBanner, GtmHead, GtmNoscript } from "@/components/Analytics";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -62,6 +63,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body>
+        <GtmNoscript />
+        <GtmHead />
         <a href="#main" className="sr-only">
           Skip to content
         </a>
@@ -70,6 +73,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <main id="main">{children}</main>
           <Footer />
           <CartDrawer />
+          <ConsentBanner />
         </StoreProvider>
         <JsonLd data={[organization(), website()]} />
       </body>
