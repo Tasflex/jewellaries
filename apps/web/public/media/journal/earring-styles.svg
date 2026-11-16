@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Stud, huggie or drop?">
+<rect width="1200" height="675" rx="28" fill="#f7f3ea"/>
+<rect x="18" y="18" width="1164" height="639" rx="20" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="60" y="82" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a7a28" text-anchor="start" letter-spacing="3">STYLE</text>
+<text x="60" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1b1716" text-anchor="start" >Stud, huggie or drop?</text>
+<rect x="60" y="165" width="340" height="430" rx="18" fill="#efe7d8"/>
+<path d="M185 205 Q285 205 275 285 Q270 335 225 345 Q180 345 185 300 Z" fill="#e9d7c4" stroke="#6d645c" stroke-width="2"/>
+<circle cx="225" cy="318" r="12" fill="#d4af37" stroke="#9a7a28" stroke-width="2"/>
+<text x="90" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#1b1716" text-anchor="start" >Stud</text>
+<text x="90" y="538" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Sits on the lobe</text>
+<text x="90" y="568" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#1b1716" text-anchor="start" >Easiest to sleep in; best first pair</text>
+<rect x="430" y="165" width="340" height="430" rx="18" fill="#efe7d8"/>
+<path d="M555 205 Q655 205 645 285 Q640 335 595 345 Q550 345 555 300 Z" fill="#e9d7c4" stroke="#6d645c" stroke-width="2"/>
+<circle cx="595" cy="335" r="24" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="460" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#1b1716" text-anchor="start" >Huggie</text>
+<text x="460" y="538" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Small hoop that hugs the lobe</text>
+<text x="460" y="568" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#1b1716" text-anchor="start" >Comfortable all day; no backs to lose</text>
+<rect x="800" y="165" width="340" height="430" rx="18" fill="#efe7d8"/>
+<path d="M925 205 Q1025 205 1015 285 Q1010 335 965 345 Q920 345 925 300 Z" fill="#e9d7c4" stroke="#6d645c" stroke-width="2"/>
+<circle cx="965" cy="318" r="6" fill="#d4af37"/><line x1="965" y1="324" x2="965" y2="375" stroke="#d4af37" stroke-width="3"/>
+<circle cx="965" cy="380" r="7" fill="#d4af37"/>
+<circle cx="965" cy="408" r="9" fill="#d4af37"/>
+<circle cx="965" cy="436" r="12" fill="#d4af37"/>
+<text x="830" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#1b1716" text-anchor="start" >Drop</text>
+<text x="830" y="538" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Hangs below the lobe</text>
+<text x="830" y="568" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#1b1716" text-anchor="start" >Most sparkle and movement; evenings</text>
+<text x="1140" y="635" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="end" >jewellariess.com</text>
+</svg>

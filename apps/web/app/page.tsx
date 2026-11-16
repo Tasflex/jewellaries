@@ -214,7 +214,7 @@ export default async function Home() {
             </Link>
           </div>
           <div className="articles">
-            {ARTICLES.map((a) => (
+            {ARTICLES.slice(0, 3).map((a) => (
               <Link key={a.slug} href={`/journal/${a.slug}`} className="article-card">
                 <div className="media">
                   <Image src={`/media/products/${a.hero}-1.webp`} alt="" fill sizes="(max-width: 860px) 100vw, 33vw" />

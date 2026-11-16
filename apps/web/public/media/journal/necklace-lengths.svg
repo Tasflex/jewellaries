@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Where each necklace length sits">
+<rect width="1200" height="675" rx="28" fill="#f7f3ea"/>
+<rect x="18" y="18" width="1164" height="639" rx="20" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="60" y="82" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a7a28" text-anchor="start" letter-spacing="3">SIZE &amp; FIT</text>
+<text x="60" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1b1716" text-anchor="start" >Where each necklace length sits</text>
+<path d="M300 170 L300 250 Q300 285 250 300 L110 345 Q70 360 70 420 L70 640 L650 640 L650 420 Q650 360 610 345 L470 300 Q420 285 420 250 L420 170" fill="#efe7d8" stroke="#1b1716" stroke-width="3"/>
+<path d="M240 318 Q360 352 480 318" fill="none" stroke="#6d645c" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M250.0 226 Q360 326 470.0 226" fill="none" stroke="#d4af37" stroke-width="5"/>
+<circle cx="360" cy="276" r="7" fill="#9a7a28"/>
+<polyline points="378,276 640,276 690,205 700,205" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="715" y="213" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#1b1716" text-anchor="start" >40 cm · 16 in</text>
+<text x="715" y="245" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#6d645c" text-anchor="start" >Base of the neck: chokers, tennis necklaces</text>
+<path d="M217.55 285 Q360 385 502.45 285" fill="none" stroke="#d4af37" stroke-width="5"/>
+<circle cx="360" cy="335" r="7" fill="#9a7a28"/>
+<polyline points="378,335 640,335 690,317 700,317" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="715" y="325" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#1b1716" text-anchor="start" >45 cm · 18 in</text>
+<text x="715" y="357" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#6d645c" text-anchor="start" >On the collarbone: everyday pendants</text>
+<path d="M184.55 345 Q360 445 535.45 345" fill="none" stroke="#d4af37" stroke-width="5"/>
+<circle cx="360" cy="395" r="7" fill="#9a7a28"/>
+<polyline points="378,395 640,395 690,429 700,429" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="715" y="437" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#1b1716" text-anchor="start" >50 cm · 20 in</text>
+<text x="715" y="469" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#6d645c" text-anchor="start" >Below the collarbone: open necks, layering</text>
+<path d="M132.3 440 Q360 540 587.7 440" fill="none" stroke="#d4af37" stroke-width="5"/>
+<circle cx="360" cy="490" r="7" fill="#9a7a28"/>
+<polyline points="378,490 640,490 690,541 700,541" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="715" y="549" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#1b1716" text-anchor="start" >60 cm · 24 in</text>
+<text x="715" y="581" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#6d645c" text-anchor="start" >Mid-chest: long pendants, high necks</text>
+<text x="1140" y="635" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="end" >jewellariess.com</text>
+</svg>

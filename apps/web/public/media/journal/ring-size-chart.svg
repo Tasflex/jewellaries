@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="US ring sizes at a glance">
+<rect width="1200" height="675" rx="28" fill="#f7f3ea"/>
+<rect x="18" y="18" width="1164" height="639" rx="20" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="60" y="82" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a7a28" text-anchor="start" letter-spacing="3">SIZE &amp; FIT</text>
+<text x="60" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1b1716" text-anchor="start" >US ring sizes at a glance</text>
+<circle cx="132.68" cy="290" r="37.68" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="132.68" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >5</text>
+<circle cx="243.96" cy="290" r="39.6" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="243.96" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >6</text>
+<circle cx="359.08" cy="290" r="41.52" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="359.08" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >7</text>
+<circle cx="478.04" cy="290" r="43.440000000000005" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="478.04" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >8</text>
+<circle cx="600.84" cy="290" r="45.35999999999999" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="600.84" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >9</text>
+<circle cx="727.72" cy="290" r="47.52" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="727.72" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >10</text>
+<circle cx="858.6800000000001" cy="290" r="49.440000000000005" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="858.6800000000001" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >11</text>
+<circle cx="993.48" cy="290" r="51.35999999999999" fill="none" stroke="#d4af37" stroke-width="7"/>
+<text x="993.48" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1b1716" text-anchor="middle" >12</text>
+<rect x="60" y="400" width="1080" height="170" rx="14" fill="#efe7d8"/>
+<text x="80" y="448" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#6d645c" text-anchor="start" >US size</text>
+<text x="80" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#6d645c" text-anchor="start" >Inside diameter</text>
+<text x="80" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#6d645c" text-anchor="start" >Circumference</text>
+<text x="330" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >5</text>
+<text x="330" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >15.7 mm</text>
+<text x="330" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >49.3 mm</text>
+<text x="434" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >6</text>
+<text x="434" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >16.5 mm</text>
+<text x="434" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >51.8 mm</text>
+<text x="538" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >7</text>
+<text x="538" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >17.3 mm</text>
+<text x="538" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >54.3 mm</text>
+<text x="642" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >8</text>
+<text x="642" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >18.1 mm</text>
+<text x="642" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >56.9 mm</text>
+<text x="746" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >9</text>
+<text x="746" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >18.9 mm</text>
+<text x="746" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >59.4 mm</text>
+<text x="850" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >10</text>
+<text x="850" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >19.8 mm</text>
+<text x="850" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >62.2 mm</text>
+<text x="954" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >11</text>
+<text x="954" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >20.6 mm</text>
+<text x="954" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >64.7 mm</text>
+<text x="1058" y="448" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >12</text>
+<text x="1058" y="498" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >21.4 mm</text>
+<text x="1058" y="548" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="400" fill="#1b1716" text-anchor="middle" >67.2 mm</text>
+<text x="60" y="610" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Rings are drawn to scale with each other, not to life size. Measure the inside of a ring, never the outside.</text>
+<text x="1140" y="635" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="end" >jewellariess.com</text>
+</svg>

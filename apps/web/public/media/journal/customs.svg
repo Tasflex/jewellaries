@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="What happens to an international parcel at customs">
+<rect width="1200" height="675" rx="28" fill="#f7f3ea"/>
+<rect x="18" y="18" width="1164" height="639" rx="20" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="60" y="82" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a7a28" text-anchor="start" letter-spacing="3">SHIPPING</text>
+<text x="60" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1b1716" text-anchor="start" >What happens to an international parcel at customs</text>
+<rect x="60" y="170" width="1080" height="88" rx="16" fill="#efe7d8" stroke="#d9cdb4" stroke-width="2"/>
+<circle cx="112" cy="214" r="24" fill="#d4af37"/>
+<text x="112" y="223" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >1</text>
+<text x="160" y="208" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1b1716" text-anchor="start" >Parcel lands in your country</text>
+<text x="160" y="238" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Customs sees the declared value and contents.</text>
+<rect x="60" y="275" width="1080" height="88" rx="16" fill="#f7f3ea" stroke="#d9cdb4" stroke-width="2"/>
+<circle cx="112" cy="319" r="24" fill="#d4af37"/>
+<text x="112" y="328" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >2</text>
+<text x="160" y="313" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1b1716" text-anchor="start" >Duty and VAT are assessed</text>
+<text x="160" y="343" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Rules and thresholds are set by your country.</text>
+<rect x="60" y="380" width="1080" height="88" rx="16" fill="#efe7d8" stroke="#d9cdb4" stroke-width="2"/>
+<circle cx="112" cy="424" r="24" fill="#d4af37"/>
+<text x="112" y="433" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >3</text>
+<text x="160" y="418" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1b1716" text-anchor="start" >The carrier may collect fees</text>
+<text x="160" y="448" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Usually by text or email before delivery.</text>
+<rect x="60" y="485" width="1080" height="88" rx="16" fill="#f7f3ea" stroke="#d9cdb4" stroke-width="2"/>
+<circle cx="112" cy="529" r="24" fill="#d4af37"/>
+<text x="112" y="538" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#1b1716" text-anchor="middle" >4</text>
+<text x="160" y="523" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1b1716" text-anchor="start" >Then it&#x27;s delivered</text>
+<text x="160" y="553" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#6d645c" text-anchor="start" >Fees paid to customs, not to the shop.</text>
+<text x="1140" y="635" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="end" >jewellariess.com</text>
+</svg>

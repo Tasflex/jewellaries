@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-label="How hard is each stone? (Mohs scale)">
+<rect width="1200" height="690" rx="28" fill="#f7f3ea"/>
+<rect x="18" y="18" width="1164" height="654" rx="20" fill="none" stroke="#d9cdb4" stroke-width="2"/>
+<text x="60" y="82" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a7a28" text-anchor="start" letter-spacing="3">STONES</text>
+<text x="60" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1b1716" text-anchor="start" >How hard is each stone? (Mohs scale)</text>
+<line x1="300" y1="590" x2="1120" y2="590" stroke="#1b1716" stroke-width="2"/>
+<line x1="300.0" y1="582" x2="300.0" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="300.0" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >1</text>
+<line x1="391.1111111111111" y1="582" x2="391.1111111111111" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="391.1111111111111" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >2</text>
+<line x1="482.2222222222222" y1="582" x2="482.2222222222222" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="482.2222222222222" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >3</text>
+<line x1="573.3333333333333" y1="582" x2="573.3333333333333" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="573.3333333333333" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >4</text>
+<line x1="664.4444444444443" y1="582" x2="664.4444444444443" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="664.4444444444443" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >5</text>
+<line x1="755.5555555555557" y1="582" x2="755.5555555555557" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="755.5555555555557" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >6</text>
+<line x1="846.6666666666666" y1="582" x2="846.6666666666666" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="846.6666666666666" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >7</text>
+<line x1="937.7777777777778" y1="582" x2="937.7777777777778" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="937.7777777777778" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >8</text>
+<line x1="1028.8888888888887" y1="582" x2="1028.8888888888887" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="1028.8888888888887" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >9</text>
+<line x1="1120.0" y1="582" x2="1120.0" y2="598" stroke="#1b1716" stroke-width="2"/>
+<text x="1120.0" y="625" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1b1716" text-anchor="middle" >10</text>
+<text x="60" y="203" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Pearl</text>
+<rect x="300" y="183" width="318.8888888888889" height="28" rx="14" fill="#efe7d8"/>
+<rect x="422.66666666666663" y="183" width="210.22222222222229" height="28" rx="14" fill="#d4af37"/>
+<text x="642.8888888888889" y="205" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >2.5–4.5</text>
+<text x="60" y="260" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Stainless steel</text>
+<rect x="300" y="240" width="455.55555555555566" height="28" rx="14" fill="#efe7d8"/>
+<rect x="696.0" y="240" width="73.55555555555566" height="28" rx="14" fill="#d4af37"/>
+<text x="779.5555555555557" y="262" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >5.5–6</text>
+<text x="60" y="317" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Quartz</text>
+<rect x="300" y="297" width="546.6666666666666" height="28" rx="14" fill="#efe7d8"/>
+<rect x="832.6666666666666" y="297" width="28.0" height="28" rx="14" fill="#d4af37"/>
+<text x="870.6666666666666" y="319" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >7</text>
+<text x="60" y="374" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Cubic zirconia</text>
+<rect x="300" y="354" width="683.3333333333334" height="28" rx="14" fill="#efe7d8"/>
+<rect x="923.7777777777778" y="354" width="73.55555555555554" height="28" rx="14" fill="#d4af37"/>
+<text x="1007.3333333333334" y="376" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >8–8.5</text>
+<text x="60" y="431" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Ruby &amp; sapphire</text>
+<rect x="300" y="411" width="728.8888888888887" height="28" rx="14" fill="#efe7d8"/>
+<rect x="1014.8888888888887" y="411" width="28.0" height="28" rx="14" fill="#d4af37"/>
+<text x="1052.8888888888887" y="433" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >9</text>
+<text x="60" y="488" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Moissanite</text>
+<rect x="300" y="468" width="751.6666666666665" height="28" rx="14" fill="#efe7d8"/>
+<rect x="1037.6666666666665" y="468" width="28.0" height="28" rx="14" fill="#d4af37"/>
+<text x="1075.6666666666665" y="490" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >9.25</text>
+<text x="60" y="545" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b1716" text-anchor="start" >Diamond</text>
+<rect x="300" y="525" width="820.0" height="28" rx="14" fill="#efe7d8"/>
+<rect x="1106.0" y="525" width="28.0" height="28" rx="14" fill="#d4af37"/>
+<text x="1144.0" y="547" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a7a28" text-anchor="start" >10</text>
+<text x="300" y="655" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="start" >Mohs hardness: anything higher on the scale can scratch anything lower.</text>
+<text x="1140" y="650" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#6d645c" text-anchor="end" >jewellariess.com</text>
+</svg>

@@ -29,11 +29,11 @@ export async function generateMetadata({ params }: { params: P }): Promise<Metad
 }
 
 const GUIDE: Record<string, string> = {
-  necklaces: "how-to-layer-necklaces",
-  rings: "ring-stacking-guide",
-  earrings: "waterproof-gold-jewellery-explained",
-  bracelets: "waterproof-gold-jewellery-explained",
-  "gift-sets": "how-to-layer-necklaces",
+  necklaces: "necklace-length-guide",
+  rings: "how-to-measure-ring-size-at-home",
+  earrings: "best-everyday-earrings",
+  bracelets: "can-you-shower-swim-sleep-in-jewellery",
+  "gift-sets": "jewellery-gift-without-knowing-size",
 };
 
 export default async function CategoryPage({ params, searchParams }: { params: P; searchParams: SP }) {
@@ -58,7 +58,7 @@ export default async function CategoryPage({ params, searchParams }: { params: P
         <p>{k.seo_description}</p>
         {guide && (
           <p>
-            New to styling? Read <Link href={`/journal/${guide.slug}`} className="gold">{guide.title}</Link>.
+            Before you choose, read <Link href={`/journal/${guide.slug}`} className="gold">{guide.title}</Link>.
           </p>
         )}
       </section>
