@@ -75,7 +75,13 @@ export const HELP: HelpPage[] = [
       { p: ["We collect only what we need to fulfil your order and, if you opt in, to email you: your name, email, shipping address and phone number. Payments are processed by our payment provider; we never see or store your full card details."] },
       { h: "Who we share data with", p: ["Your shipping details are shared with our fulfilment partner and the delivery carrier, only to deliver your order."] },
       { h: "Your rights", p: ["You can ask us to see, correct or delete your data at any time by emailing us. You can unsubscribe from emails using the link in any message."] },
-      { h: "Cookies", p: ["We use essential cookies to remember your bag, country and currency. We don't sell your data."] },
+      {
+        h: "Cookies",
+        p: [
+          "We use essential cookies to remember your bag, country and currency. We don't sell your data.",
+          "With your consent where the law requires it, we also use Google Analytics and advertising cookies to understand what you love and show relevant ads, and, when you arrive through one of our affiliate partners' links, a NetAffil cookie (na_click, kept up to 120 days) so the partner is credited for your order. It holds only a random click ID.",
+        ],
+      },
     ],
   },
   {

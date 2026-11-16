@@ -31,6 +31,14 @@ function Inner() {
               { transaction_id: order, value: j.total_usd, shipping: j.shipping_usd, currency: "USD" }
             );
           }
+          // Credit the affiliate who sent this shopper, if any (NetAffil ignores repeats of an order).
+          // Commission is on the items after discounts, so shipping is left out.
+          if (typeof j.total_usd === "number") {
+            const w = window as unknown as { netaffil?: ((...a: unknown[]) => void) & { q?: unknown[][] } };
+            w.netaffil = w.netaffil || Object.assign((...a: unknown[]) => { (w.netaffil!.q = w.netaffil!.q || []).push(a); }, {});
+            const amount = Math.max(0, j.total_usd - (Number(j.shipping_usd) || 0));
+            w.netaffil("conversion", { order_id: order, amount: amount.toFixed(2), currency: "USD" });
+          }
           clear();
         }
       })

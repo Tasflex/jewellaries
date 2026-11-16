@@ -60,6 +60,7 @@ export function ConsentBanner() {
       ad_personalization: v,
       analytics_storage: v,
     });
+    window.dispatchEvent(new Event("jw-consent"));
     setShow(false);
   };
   if (!show) return null;
@@ -81,6 +82,30 @@ export function ConsentBanner() {
       </div>
     </div>
   );
+}
+
+/**
+ * NetAffil affiliate tracking: remembers which affiliate link a shopper arrived from, so the
+ * order confirmation page can credit that affiliate. It sets an advertising cookie, so it follows
+ * the same consent rule as GTM: on by default, opt-in in the EEA/UK/CH.
+ */
+export function NetAffil() {
+  const [allowed, setAllowed] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      let choice: string | null = null;
+      try {
+        choice = localStorage.getItem("jw_consent");
+      } catch {}
+      // Read the edge country cookie directly: the store's country starts as "US" until mounted.
+      const country = /(?:^|;\s*)ar_country=([^;]+)/.exec(document.cookie)?.[1] || "US";
+      setAllowed(choice === "granted" || (choice !== "denied" && !CONSENT_REGIONS.includes(country)));
+    };
+    check();
+    window.addEventListener("jw-consent", check);
+    return () => window.removeEventListener("jw-consent", check);
+  }, []);
+  return allowed ? <Script id="netaffil" src="https://netaffil.com/t.js" strategy="afterInteractive" /> : null;
 }
 
 /** Fires view_item once for a product page. */

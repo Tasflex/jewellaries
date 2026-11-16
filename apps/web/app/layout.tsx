@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { ConsentBanner, GtmHead, GtmNoscript } from "@/components/Analytics";
+import { ConsentBanner, GtmHead, GtmNoscript, NetAffil } from "@/components/Analytics";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -77,6 +77,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Footer />
           <CartDrawer />
           <ConsentBanner />
+          <NetAffil />
         </StoreProvider>
         <JsonLd data={[organization(), website()]} />
       </body>
