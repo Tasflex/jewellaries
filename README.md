@@ -56,6 +56,5 @@ Services (systemd): `aurum-api` (:8300), `aurum-web` (:3300), `aurum-fulfil`. ng
 2. **Payments**: set `PAYSTACK_SECRET_KEY` and set the Paystack webhook URL to `https://yourdomain.com/api/webhooks/paystack`.
 3. **Supplier**: set `CJ_API_KEY`, then map each product's `supplier.sku` / `vids` to real CJ variant IDs and run `python -m studio sync`.
 4. **Compare-at prices**: only show a struck-through price while it's a genuine sale price (`NEXT_PUBLIC_SHOW_COMPARE_AT=0` otherwise). Reference-price rules apply in the EU, UK, US and Australia.
-5. **Reviews**: ratings only appear (on the page and in Google rich results) once real reviews are added to the catalogue.
-6. **Google Merchant Center / TikTok / Meta catalogues**: submit `https://yourdomain.com/feeds/google.xml`.
-7. **Search Console**: submit `https://yourdomain.com/sitemap.xml`.
+5. **Google Merchant Center / TikTok / Meta catalogues**: submit `https://yourdomain.com/feeds/google.xml`.
+6. **Search Console**: submit `https://yourdomain.com/sitemap.xml`.

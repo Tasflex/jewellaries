@@ -17,8 +17,6 @@ export type Product = {
   tags: string[];
   layer: string | null;
   bundle?: string[];
-  rating?: number;
-  reviews?: number;
   supplier: { name: string; sku: string };
 };
 

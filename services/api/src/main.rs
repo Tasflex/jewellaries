@@ -137,7 +137,6 @@ async fn list_products(State(s): State<AppState>, Query(q): Query<ProductQuery>)
     match q.sort.as_deref() {
         Some("price-asc") => out.sort_by(|a, b| price(a).total_cmp(&price(b))),
         Some("price-desc") => out.sort_by(|a, b| price(b).total_cmp(&price(a))),
-        Some("rating") => out.sort_by(|a, b| b["reviews"].as_f64().unwrap_or(0.0).total_cmp(&a["reviews"].as_f64().unwrap_or(0.0))),
         _ => {}
     }
     Json(json!({ "products": out }))

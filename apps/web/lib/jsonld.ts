@@ -72,10 +72,6 @@ export function product(p: Product, cat: Catalog, videos: Video[]) {
     material: p.highlights[0],
     color: p.metal === "gold" ? "Gold" : p.metal === "silver" ? "Silver" : "Rose gold",
     image: [abs(`/media/products/${p.slug}-1.webp`), abs(`/media/products/${p.slug}-2.webp`), abs(`/media/products/${p.slug}-sq.jpg`)],
-    // Ratings are only emitted when real, verified reviews exist in the catalogue.
-    ...(p.rating && p.reviews
-      ? { aggregateRating: { "@type": "AggregateRating", ratingValue: p.rating, reviewCount: p.reviews } }
-      : {}),
     subjectOf: videos.map((v) => videoObject(v, p)),
     offers: {
       "@type": "Offer",
